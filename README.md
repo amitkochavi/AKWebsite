@@ -75,6 +75,16 @@ Set these in `.env.local` (development) and in Netlify (production):
 
 ## Deploy to Netlify
 
+### One-click
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/amitkochavi/AKWebsite)
+
+Click the button, sign in to Netlify, and authorize the repo. The site builds
+and goes live immediately with bundled placeholder content — you can add the
+Supabase environment variables afterwards to enable the live dashboard.
+
+### Manual
+
 1. Push this repo and connect it in Netlify ("Add new site → Import").
 2. Netlify auto-detects Next.js and installs `@netlify/plugin-nextjs`
    (also declared in `netlify.toml`). Build command `npm run build`.
