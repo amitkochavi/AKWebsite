@@ -1,0 +1,138 @@
+{
+  "site": {
+    "name": "Amit Kochavi",
+    "legalName": "Amit L. Kochavi",
+    "tagline": "Business. Philanthropy. Public Service.",
+    "description": "Amit Kochavi is an entrepreneur, fourth-generation philanthropist, and public servant focused on building enduring businesses, strengthening communities, and serving the people of Sderot and the State of Israel.",
+    "url": "https://amitkochavi.com",
+    "email": "office@amitkochavi.com",
+    "location": "Israel",
+    "ogImage": "/og-image.png"
+  },
+  "nav": {
+    "home": "Home",
+    "business": "Business",
+    "philanthropy": "Philanthropy",
+    "publicService": "Public Service",
+    "news": "News",
+    "contact": "Contact",
+    "sitemap": "Sitemap"
+  },
+  "hero": {
+    "eyebrow": "Amit L. Kochavi",
+    "title": "Building businesses, communities, and a stronger future.",
+    "subtitle": "Entrepreneur. Fourth-generation philanthropist. Public servant for Sderot and the State of Israel.",
+    "primaryCta": "Explore the work",
+    "secondaryCta": "Get in touch"
+  },
+  "intro": {
+    "title": "A career devoted to enterprise and impact",
+    "body": "Amit Kochavi has spent his career at the intersection of business, philanthropy, and public service. He builds and backs companies for the long term, continues a four-generation family legacy of giving, and serves his community in Sderot — translating private success into public good."
+  },
+  "pillars": [
+    {
+      "id": "business",
+      "title": "Business Career",
+      "summary": "Founding, building, and backing companies across technology, real estate, and capital markets — with a focus on durable value and long-term ownership.",
+      "cta": "See the business work"
+    },
+    {
+      "id": "philanthropy",
+      "title": "Philanthropy",
+      "summary": "A fourth-generation philanthropist carrying forward a family tradition of giving — investing in education, opportunity, and resilient communities.",
+      "cta": "Explore philanthropy"
+    },
+    {
+      "id": "public-service",
+      "title": "Public Service",
+      "summary": "Serving the people of Sderot and southern Israel — rebuilding, supporting families, and strengthening civic life on the front lines.",
+      "cta": "See public service"
+    }
+  ],
+  "business": {
+    "title": "Business Career",
+    "lead": "Building and backing enduring companies.",
+    "intro": "Amit Kochavi is an entrepreneur and investor who builds platforms for the long term. His work spans operating companies and investments across technology, real estate, and capital markets, with a consistent philosophy: own great businesses, support exceptional teams, and compound value patiently over decades rather than quarters.",
+    "sections": [
+      {
+        "heading": "Technology",
+        "body": "Backing and building technology companies — taking meaningful ownership positions and partnering with founders to scale durable products and category-defining platforms."
+      },
+      {
+        "heading": "Real Estate",
+        "body": "Development and strategic real estate investment, with an emphasis on long-hold assets that strengthen communities and create lasting value."
+      },
+      {
+        "heading": "Capital Markets",
+        "body": "Disciplined investing across public and private markets, guided by fundamentals, patience, and a focus on protecting and compounding capital."
+      }
+    ],
+    "philosophyTitle": "Operating philosophy",
+    "philosophy": "Build for the long term. Align with outstanding people. Treat capital as a tool for creating real, lasting value — not a scorecard."
+  },
+  "philanthropy": {
+    "title": "Philanthropy",
+    "lead": "A fourth-generation commitment to giving.",
+    "intro": "Philanthropy is a family inheritance as much as a personal calling. As a fourth-generation philanthropist, Amit Kochavi continues a legacy of giving that began with his great-grandparents — investing in education, opportunity, and the resilience of Israeli communities.",
+    "sections": [
+      {
+        "heading": "Education & Opportunity",
+        "body": "Supporting students and programs that open doors — scholarships, mentorship, and access to opportunity for the next generation."
+      },
+      {
+        "heading": "Community Resilience",
+        "body": "Funding initiatives that help communities withstand hardship and rebuild stronger, with particular focus on Israel's south."
+      },
+      {
+        "heading": "A Family Legacy",
+        "body": "Four generations of giving, carried forward with the conviction that those who build should also lift others up."
+      }
+    ]
+  },
+  "publicService": {
+    "title": "Public Service",
+    "lead": "Serving Sderot and southern Israel.",
+    "intro": "Public service is where conviction meets the front lines. In Sderot and across southern Israel, Amit Kochavi works to rebuild, to support families under pressure, and to strengthen the civic fabric of communities that carry an outsized share of the national burden.",
+    "sections": [
+      {
+        "heading": "Sderot",
+        "body": "Standing with the residents of Sderot — supporting recovery, resilience, and renewal in a city on the front line."
+      },
+      {
+        "heading": "Supporting Families",
+        "body": "Practical support for families and first responders, and programs that help communities heal and move forward."
+      },
+      {
+        "heading": "Civic Strength",
+        "body": "Investing in the institutions, leaders, and initiatives that keep communities strong over the long run."
+      }
+    ]
+  },
+  "news": {
+    "title": "News",
+    "lead": "Market commentary, company updates, and investment perspective.",
+    "posts": [
+      {
+        "slug": "welcome",
+        "title": "A note on building for the long term",
+        "date": "2026-01-15",
+        "excerpt": "Why patient ownership, strong communities, and public service belong together.",
+        "body": "Building something that lasts requires the same discipline whether you are growing a company, sustaining a philanthropic legacy, or serving a community. This page will share commentary, company updates, and perspective on the work ahead."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "lead": "Get in touch.",
+    "intro": "For business inquiries, philanthropic partnerships, or public service initiatives, please reach out.",
+    "emailLabel": "Email",
+    "formName": "Your name",
+    "formEmail": "Your email",
+    "formMessage": "Your message",
+    "formSubmit": "Send message"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtNote": "Business · Philanthropy · Public Service"
+  }
+}
