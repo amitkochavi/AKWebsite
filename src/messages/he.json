@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "בית",
+    "about": "אודות",
+    "business": "עסקים",
+    "philanthropy": "פילנתרופיה",
+    "publicService": "שירות ציבורי",
+    "media": "תקשורת",
+    "contact": "צור קשר"
+  },
+  "common": {
+    "readMore": "קראו עוד",
+    "learnMore": "מידע נוסף",
+    "getInTouch": "יצירת קשר",
+    "switchLanguage": "English",
+    "switchLanguageAria": "מעבר לאנגלית",
+    "backToMedia": "חזרה לתקשורת",
+    "allArticles": "כל המאמרים",
+    "skipToContent": "דלגו לתוכן"
+  },
+  "media": {
+    "title": "תקשורת וכתיבה",
+    "empty": "טרם פורסמו פריטים.",
+    "external": "לכתבה המקורית"
+  },
+  "contact": {
+    "name": "שם",
+    "email": "דוא\"ל",
+    "message": "הודעה",
+    "send": "שליחת הודעה",
+    "sending": "שולח…",
+    "success": "תודה — הודעתכם נשלחה.",
+    "error": "אירעה תקלה. נסו שוב."
+  },
+  "footer": {
+    "rights": "כל הזכויות שמורות.",
+    "sections": "מדורים",
+    "connect": "עקבו אחריי"
+  },
+  "admin": {
+    "signOut": "התנתקות"
+  }
+}
