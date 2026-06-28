@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "business": "Business",
+    "philanthropy": "Philanthropy",
+    "publicService": "Public Service",
+    "media": "Media",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "getInTouch": "Get in touch",
+    "switchLanguage": "עברית",
+    "switchLanguageAria": "Switch to Hebrew",
+    "backToMedia": "Back to Media",
+    "allArticles": "All articles",
+    "skipToContent": "Skip to content"
+  },
+  "media": {
+    "title": "Media & Writing",
+    "empty": "No items published yet.",
+    "external": "Read on the original site"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Thank you — your message has been sent.",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "sections": "Sections",
+    "connect": "Connect"
+  },
+  "admin": {
+    "signOut": "Sign out"
+  }
+}
