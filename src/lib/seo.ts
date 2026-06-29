@@ -76,7 +76,11 @@ export function pageSeo(page: Page, settings: SiteSettings, locale: Locale) {
 
 /* ── JSON-LD builders ─────────────────────────────────────────────────── */
 
-export function personSchema(settings: SiteSettings, locale: Locale) {
+export function personSchema(
+  settings: SiteSettings,
+  locale: Locale,
+  press: { url: string; name: string }[] = [],
+) {
   const p = settings.person_schema;
   return {
     "@context": "https://schema.org",
@@ -84,11 +88,24 @@ export function personSchema(settings: SiteSettings, locale: Locale) {
     name: p.name,
     alternateName: p.alternateName,
     url: SITE_URL,
+    mainEntityOfPage: SITE_URL,
     jobTitle: pick(p.jobTitle, locale),
     description: pick(p.description, locale),
     image: p.image,
     sameAs: p.sameAs,
     knowsAbout: p.knowsAbout,
+    knowsLanguage: ["en", "he"],
+    // Authoritative third-party coverage helps Google associate these pages
+    // with the person entity.
+    ...(press.length
+      ? {
+          subjectOf: press.map((a) => ({
+            "@type": "NewsArticle",
+            headline: a.name,
+            url: a.url,
+          })),
+        }
+      : {}),
   };
 }
 

@@ -1,4 +1,11 @@
-import type { MediaItem, Page, PageKey, SiteSettings } from "@/types/content";
+import type {
+  Localized,
+  MediaItem,
+  MediaKind,
+  Page,
+  PageKey,
+  SiteSettings,
+} from "@/types/content";
 
 /**
  * Bundled default content. Used as a fallback when Supabase is not yet
@@ -33,7 +40,12 @@ export const FALLBACK_SETTINGS: SiteSettings = {
   },
   person_schema: {
     name: "Amit Kochavi",
-    alternateName: ["Amit L. Kochavi", "עמית כוכבי"],
+    alternateName: [
+      "Amit L. Kochavi",
+      "Amit Lev Kochavi",
+      "עמית כוכבי",
+      "עמית לב כוכבי",
+    ],
     jobTitle: { en: "Entrepreneur & Public Servant", he: "יזם ואיש ציבור" },
     description: {
       en: "Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.",
@@ -338,68 +350,200 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
   },
 };
 
-export const FALLBACK_MEDIA: MediaItem[] = [
-  {
-    id: "seed-1",
-    slug: "building-for-the-long-term",
-    kind: "article",
-    title: {
-      en: "Building for the Long Term",
-      he: "לבנות לטווח הארוך",
-    },
-    excerpt: {
-      en: "Why patient capital and people-first leadership create companies that last.",
-      he: "מדוע הון סבלני ומנהיגות שמציבה אנשים במרכז יוצרים חברות שמתמידות.",
-    },
-    body: {
-      en: "An essay on the principles behind two decades of entrepreneurship — and why credibility compounds.",
-      he: "מאמר על העקרונות שמאחורי שני עשורים של יזמות — ומדוע אמינות צוברת ערך עם הזמן.",
-    },
-    published_at: "2026-01-15",
+const loc = (en: string, he?: string): Localized => ({ en, he: he ?? en });
+
+/** A book on the reading list (rendered on /books). */
+function book(
+  order: number,
+  slug: string,
+  title: string,
+  author: string,
+): MediaItem {
+  return {
+    id: `book-${order}`,
+    slug,
+    kind: "reading",
+    title: loc(title),
+    excerpt: loc(author),
+    body: loc(""),
+    published_at: null,
     is_published: true,
-    sort_order: 0,
+    sort_order: order,
     seo: {},
+  };
+}
+
+/** A press mention or article (rendered on /media; links to the source). */
+function press(
+  order: number,
+  opts: {
+    slug: string;
+    kind?: MediaKind;
+    title: Localized;
+    outlet: Localized;
+    url: string;
+    date?: string;
   },
-  {
-    id: "seed-2",
-    slug: "standing-with-sderot",
-    kind: "writing",
-    title: {
-      en: "Standing With Sderot",
-      he: "עומדים עם שדרות",
-    },
-    excerpt: {
-      en: "On resilience, recovery, and the responsibility to invest in community.",
-      he: "על חוסן, שיקום והאחריות להשקיע בקהילה.",
-    },
-    body: {
-      en: "Reflections on what it means to serve the place you call home.",
-      he: "הרהורים על משמעות השירות למקום שאתה קורא לו בית.",
-    },
-    published_at: "2026-02-20",
+): MediaItem {
+  return {
+    id: `press-${order}`,
+    slug: opts.slug,
+    kind: opts.kind ?? "press",
+    title: opts.title,
+    excerpt: opts.outlet,
+    body: loc(""),
+    external_url: opts.url,
+    published_at: opts.date ?? null,
     is_published: true,
-    sort_order: 1,
+    sort_order: order,
     seo: {},
-  },
-  {
-    id: "seed-3",
-    slug: "a-family-legacy-of-giving",
-    kind: "press",
-    title: {
-      en: "A Family Legacy of Giving",
-      he: "מורשת משפחתית של נתינה",
-    },
-    excerpt: {
-      en: "How four generations shaped a philosophy of philanthropy.",
-      he: "כיצד ארבעה דורות עיצבו תפיסת פילנתרופיה.",
-    },
-    body: {
-      en: "A profile of the values passed down through a fourth-generation philanthropist.",
-      he: "פרופיל של הערכים שעברו מדור לדור אצל פילנתרופ מהדור הרביעי.",
-    },
-    published_at: "2026-03-10",
-    is_published: true,
-    sort_order: 2,
-    seo: {},
-  },
+  };
+}
+
+export const FALLBACK_BOOKS: MediaItem[] = [
+  book(0, "shoe-dog", "Shoe Dog", "Phil Knight"),
+  book(1, "my-life", "My Life", "Bill Clinton"),
+  book(2, "elon-musk", "Elon Musk", "Walter Isaacson"),
+  book(3, "what-it-takes", "What It Takes", "Stephen A. Schwarzman"),
+  book(4, "embracing-defeat", "Embracing Defeat", "John W. Dower"),
+  book(5, "the-alchemist", "The Alchemist", "Paulo Coelho"),
+  book(6, "principles", "Principles", "Ray Dalio"),
+  book(
+    7,
+    "how-to-make-a-few-billion-dollars",
+    "How to Make a Few Billion Dollars",
+    "Brad Jacobs",
+  ),
+  book(
+    8,
+    "fall-in-love-with-the-problem",
+    "Fall in Love with the Problem, Not the Solution",
+    "Uri Levine",
+  ),
+  book(
+    9,
+    "the-challenger-sale",
+    "The Challenger Sale",
+    "Brent Adamson & Matthew Dixon",
+  ),
+  book(10, "the-ride-of-a-lifetime", "The Ride of a Lifetime", "Bob Iger"),
+  book(11, "thinking-fast-and-slow", "Thinking, Fast and Slow", "Daniel Kahneman"),
+  book(12, "bloomberg-by-bloomberg", "Bloomberg by Bloomberg", "Mike Bloomberg"),
 ];
+
+export const FALLBACK_PRESS: MediaItem[] = [
+  press(11, {
+    slug: "themarker-40-under-40",
+    title: loc("TheMarker 40 Under 40", "40 הצעירים המבטיחים של דה־מרקר"),
+    outlet: loc("TheMarker", "דה־מרקר"),
+    url: "https://www.themarker.com/magazine/2025-01-01/ty-article-magazine/.premium/00000194-12c9-da93-a9dc-9ee9e4080000",
+    date: "2025-01-01",
+  }),
+  press(6, {
+    slug: "forward-oct7-sderot",
+    kind: "writing",
+    title: loc("Oct. 7, Israel’s recovery, and the rebuilding of Sderot"),
+    outlet: loc("The Forward", "פורוורד"),
+    url: "https://forward.com/opinion/659484/oct-7-israel-recovery-sderot/",
+  }),
+  press(4, {
+    slug: "success-vision-and-adaptability",
+    kind: "article",
+    title: loc("Amit Kochavi: A Blend of Vision and Adaptability"),
+    outlet: loc("Success"),
+    url: "https://www.success.com/amit-kochavi-a-blend-of-vision-and-adaptability",
+  }),
+  press(3, {
+    slug: "jns-clemson-hebrewu-sapir",
+    title: loc(
+      "Clemson, Hebrew U & Sapir partnership ‘a perfect match,’ says Nikki Haley",
+    ),
+    outlet: loc("JNS"),
+    url: "https://www.jns.org/u.s.-news/clemson-hebrew-u-sapir-partnership-a-perfect-match-nikki-haley-says",
+  }),
+  press(5, {
+    slug: "israel-hayom-tech",
+    title: loc("Amit Kochavi in Israel Hayom", "עמית כוכבי בישראל היום"),
+    outlet: loc("Israel Hayom — Tech", "ישראל היום — טכנולוגיה"),
+    url: "https://www.israelhayom.co.il/tech/tech-news/article/15583312",
+  }),
+  press(0, {
+    slug: "walla-cormi-doss",
+    title: loc(
+      "Cormi partners with Doss Inc.",
+      "Cormi בשיתוף פעולה עם Doss Inc.",
+    ),
+    outlet: loc("Walla Finance", "וואלה! פיננסים"),
+    url: "https://finance.walla.co.il/item/3753758",
+  }),
+  press(1, {
+    slug: "davar-cormi-circles",
+    title: loc(
+      "Cormi (Circles IT Innovation)",
+      "Cormi (סירקלס איי.טי אינוביישן)",
+    ),
+    outlet: loc("Davar", "דבר"),
+    url: "https://www.davar1.co.il/389697/",
+  }),
+  press(9, {
+    slug: "makor-rishon-sderot",
+    title: loc(
+      "In conversation with Aviad Friedman on Sderot",
+      "בריאיון עם אביעד פרידמן על שדרות",
+    ),
+    outlet: loc("Makor Rishon", "מקור ראשון"),
+    url: "https://www.makorrishon.co.il/news/settlement/article/161849",
+  }),
+  press(8, {
+    slug: "israel-hayom-early-profile",
+    title: loc("Israel Hayom: an early profile", "ישראל היום: פרופיל מוקדם"),
+    outlet: loc("Israel Hayom", "ישראל היום"),
+    url: "https://www.israelhayom.co.il/article/296635",
+  }),
+  press(7, {
+    slug: "jpost-feature",
+    title: loc("Featured in The Jerusalem Post"),
+    outlet: loc("The Jerusalem Post"),
+    url: "https://www.jpost.com/israel-news/article-834231",
+  }),
+  press(2, {
+    slug: "clemson-israeli-universities",
+    title: loc("Clemson & Israeli universities partner to advance agriculture"),
+    outlet: loc("Who’s on the Move"),
+    url: "https://whosonthemove.com/clemson-israeli-universities-partnership-will-advance-agriculture/",
+  }),
+  press(10, {
+    slug: "calbizjournal-hebrewu-clemson",
+    title: loc("Hebrew University and Clemson forge agricultural partnership"),
+    outlet: loc("California Business Journal"),
+    url: "https://calbizjournal.com/hebrew-university-and-clemson-university-forge-agricultural-partnership/",
+  }),
+  press(12, {
+    slug: "calcalist-circles",
+    title: loc("Calcalist: Circles", "כלכליסט: Circles"),
+    outlet: loc("Calcalist", "כלכליסט"),
+    url: "https://calcalist360.webflow.io/articles/circles",
+  }),
+  press(13, {
+    slug: "atlwire-digitizing-industries",
+    kind: "article",
+    title: loc("Meet Amit Kochavi: Digitizing Traditional Industries"),
+    outlet: loc("ATL Wire"),
+    url: "https://atlwire.com/meet-amit-kochavi-digitizing-traditional-industries/",
+  }),
+  press(14, {
+    slug: "cleveland-jewish-news-mou",
+    title: loc("Hebrew U & Sapir sign MOU with Clemson"),
+    outlet: loc("Cleveland Jewish News"),
+    url: "https://www.clevelandjewishnews.com/jns/hebrew-u-sapir-college-sign-mou-with-clemson-to-tackle-agricultural-issues/article_8b3d14bb-bb15-51f2-8784-e6ef4211d1ff.html",
+  }),
+  press(15, {
+    slug: "syp-studios-deskless-employees",
+    kind: "article",
+    title: loc("An Employee Engagement Platform for Deskless Employees"),
+    outlet: loc("SYP Studios"),
+    url: "https://sypstudios.com/amit-kochavi-providing-an-employee-engagement-platform-for-deskless-employees",
+  }),
+];
+
+export const FALLBACK_MEDIA: MediaItem[] = [...FALLBACK_PRESS, ...FALLBACK_BOOKS];

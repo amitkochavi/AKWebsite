@@ -14,7 +14,7 @@ values (
   'office@amitkochavi.com',
   $json$[{"platform":"LinkedIn","url":"https://www.linkedin.com/in/amitkochavi"},{"platform":"X","url":"https://x.com/amitkochavi"}]$json$,
   $json${"title":{"en":"Amit Kochavi — Business, Philanthropy & Public Service","he":"עמית כוכבי — עסקים, פילנתרופיה ושירות ציבורי"},"description":{"en":"The official website of Amit L. Kochavi — entrepreneur and business leader, fourth-generation philanthropist, and public servant committed to the people of Sderot and the Negev.","he":"האתר הרשמי של עמית כוכבי — יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לתושבי שדרות והנגב."}}$json$,
-  $json${"name":"Amit Kochavi","alternateName":["Amit L. Kochavi","עמית כוכבי"],"jobTitle":{"en":"Entrepreneur & Public Servant","he":"יזם ואיש ציבור"},"description":{"en":"Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.","he":"עמית כוכבי הוא יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לחיזוק שדרות וקהילות הדרום."},"sameAs":["https://www.linkedin.com/in/amitkochavi","https://x.com/amitkochavi"],"knowsAbout":["Entrepreneurship","Investment","Philanthropy","Public Service","Community Development","Sderot"]}$json$
+  $json${"name":"Amit Kochavi","alternateName":["Amit L. Kochavi","Amit Lev Kochavi","עמית כוכבי","עמית לב כוכבי"],"jobTitle":{"en":"Entrepreneur & Public Servant","he":"יזם ואיש ציבור"},"description":{"en":"Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.","he":"עמית כוכבי הוא יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לחיזוק שדרות וקהילות הדרום."},"sameAs":["https://www.linkedin.com/in/amitkochavi","https://x.com/amitkochavi"],"knowsAbout":["Entrepreneurship","Investment","Philanthropy","Public Service","Community Development","Sderot"]}$json$
 )
 on conflict (id) do update set
   site_name = excluded.site_name,
@@ -70,27 +70,41 @@ insert into public.pages (key, title, hero, blocks, sort_order) values
 )
 on conflict (key) do nothing;
 
--- ── Media & writing ──────────────────────────────────────────────────────────
-insert into public.media_items (slug, kind, title, excerpt, body, published_at, sort_order) values
-(
-  'building-for-the-long-term', 'article',
-  $json${"en":"Building for the Long Term","he":"לבנות לטווח הארוך"}$json$,
-  $json${"en":"Why patient capital and people-first leadership create companies that last.","he":"מדוע הון סבלני ומנהיגות שמציבה אנשים במרכז יוצרים חברות שמתמידות."}$json$,
-  $json${"en":"An essay on the principles behind two decades of entrepreneurship — and why credibility compounds.","he":"מאמר על העקרונות שמאחורי שני עשורים של יזמות — ומדוע אמינות צוברת ערך עם הזמן."}$json$,
-  '2026-01-15', 0
-),
-(
-  'standing-with-sderot', 'writing',
-  $json${"en":"Standing With Sderot","he":"עומדים עם שדרות"}$json$,
-  $json${"en":"On resilience, recovery, and the responsibility to invest in community.","he":"על חוסן, שיקום והאחריות להשקיע בקהילה."}$json$,
-  $json${"en":"Reflections on what it means to serve the place you call home.","he":"הרהורים על משמעות השירות למקום שאתה קורא לו בית."}$json$,
-  '2026-02-20', 1
-),
-(
-  'a-family-legacy-of-giving', 'press',
-  $json${"en":"A Family Legacy of Giving","he":"מורשת משפחתית של נתינה"}$json$,
-  $json${"en":"How four generations shaped a philosophy of philanthropy.","he":"כיצד ארבעה דורות עיצבו תפיסת פילנתרופיה."}$json$,
-  $json${"en":"A profile of the values passed down through a fourth-generation philanthropist.","he":"פרופיל של הערכים שעברו מדור לדור אצל פילנתרופ מהדור הרביעי."}$json$,
-  '2026-03-10', 2
-)
+-- ── Books (reading list, shown on /books) ────────────────────────────────────
+-- excerpt holds the author. he left empty → falls back to en at render time.
+insert into public.media_items (slug, kind, title, excerpt, body, sort_order) values
+('shoe-dog','reading',$json${"en":"Shoe Dog","he":""}$json$,$json${"en":"Phil Knight","he":""}$json$,$json${"en":"","he":""}$json$,0),
+('my-life','reading',$json${"en":"My Life","he":""}$json$,$json${"en":"Bill Clinton","he":""}$json$,$json${"en":"","he":""}$json$,1),
+('elon-musk','reading',$json${"en":"Elon Musk","he":""}$json$,$json${"en":"Walter Isaacson","he":""}$json$,$json${"en":"","he":""}$json$,2),
+('what-it-takes','reading',$json${"en":"What It Takes","he":""}$json$,$json${"en":"Stephen A. Schwarzman","he":""}$json$,$json${"en":"","he":""}$json$,3),
+('embracing-defeat','reading',$json${"en":"Embracing Defeat","he":""}$json$,$json${"en":"John W. Dower","he":""}$json$,$json${"en":"","he":""}$json$,4),
+('the-alchemist','reading',$json${"en":"The Alchemist","he":""}$json$,$json${"en":"Paulo Coelho","he":""}$json$,$json${"en":"","he":""}$json$,5),
+('principles','reading',$json${"en":"Principles","he":""}$json$,$json${"en":"Ray Dalio","he":""}$json$,$json${"en":"","he":""}$json$,6),
+('how-to-make-a-few-billion-dollars','reading',$json${"en":"How to Make a Few Billion Dollars","he":""}$json$,$json${"en":"Brad Jacobs","he":""}$json$,$json${"en":"","he":""}$json$,7),
+('fall-in-love-with-the-problem','reading',$json${"en":"Fall in Love with the Problem, Not the Solution","he":""}$json$,$json${"en":"Uri Levine","he":""}$json$,$json${"en":"","he":""}$json$,8),
+('the-challenger-sale','reading',$json${"en":"The Challenger Sale","he":""}$json$,$json${"en":"Brent Adamson & Matthew Dixon","he":""}$json$,$json${"en":"","he":""}$json$,9),
+('the-ride-of-a-lifetime','reading',$json${"en":"The Ride of a Lifetime","he":""}$json$,$json${"en":"Bob Iger","he":""}$json$,$json${"en":"","he":""}$json$,10),
+('thinking-fast-and-slow','reading',$json${"en":"Thinking, Fast and Slow","he":""}$json$,$json${"en":"Daniel Kahneman","he":""}$json$,$json${"en":"","he":""}$json$,11),
+('bloomberg-by-bloomberg','reading',$json${"en":"Bloomberg by Bloomberg","he":""}$json$,$json${"en":"Mike Bloomberg","he":""}$json$,$json${"en":"","he":""}$json$,12)
+on conflict (slug) do nothing;
+
+-- ── Press & coverage (shown on /media, link out to source) ────────────────────
+-- excerpt holds the outlet name. external_url is the source link.
+insert into public.media_items (slug, kind, title, excerpt, body, external_url, published_at, sort_order) values
+('walla-cormi-doss','press',$json${"en":"Cormi partners with Doss Inc.","he":"Cormi בשיתוף פעולה עם Doss Inc."}$json$,$json${"en":"Walla Finance","he":"וואלה! פיננסים"}$json$,$json${"en":"","he":""}$json$,'https://finance.walla.co.il/item/3753758',null,0),
+('davar-cormi-circles','press',$json${"en":"Cormi (Circles IT Innovation)","he":"Cormi (סירקלס איי.טי אינוביישן)"}$json$,$json${"en":"Davar","he":"דבר"}$json$,$json${"en":"","he":""}$json$,'https://www.davar1.co.il/389697/',null,1),
+('clemson-israeli-universities','press',$json${"en":"Clemson & Israeli universities partner to advance agriculture","he":""}$json$,$json${"en":"Who’s on the Move","he":""}$json$,$json${"en":"","he":""}$json$,'https://whosonthemove.com/clemson-israeli-universities-partnership-will-advance-agriculture/',null,2),
+('jns-clemson-hebrewu-sapir','press',$json${"en":"Clemson, Hebrew U & Sapir partnership ‘a perfect match,’ says Nikki Haley","he":""}$json$,$json${"en":"JNS","he":""}$json$,$json${"en":"","he":""}$json$,'https://www.jns.org/u.s.-news/clemson-hebrew-u-sapir-partnership-a-perfect-match-nikki-haley-says',null,3),
+('success-vision-and-adaptability','article',$json${"en":"Amit Kochavi: A Blend of Vision and Adaptability","he":""}$json$,$json${"en":"Success","he":""}$json$,$json${"en":"","he":""}$json$,'https://www.success.com/amit-kochavi-a-blend-of-vision-and-adaptability',null,4),
+('israel-hayom-tech','press',$json${"en":"Amit Kochavi in Israel Hayom","he":"עמית כוכבי בישראל היום"}$json$,$json${"en":"Israel Hayom — Tech","he":"ישראל היום — טכנולוגיה"}$json$,$json${"en":"","he":""}$json$,'https://www.israelhayom.co.il/tech/tech-news/article/15583312',null,5),
+('forward-oct7-sderot','writing',$json${"en":"Oct. 7, Israel’s recovery, and the rebuilding of Sderot","he":""}$json$,$json${"en":"The Forward","he":"פורוורד"}$json$,$json${"en":"","he":""}$json$,'https://forward.com/opinion/659484/oct-7-israel-recovery-sderot/',null,6),
+('jpost-feature','press',$json${"en":"Featured in The Jerusalem Post","he":""}$json$,$json${"en":"The Jerusalem Post","he":""}$json$,$json${"en":"","he":""}$json$,'https://www.jpost.com/israel-news/article-834231',null,7),
+('israel-hayom-early-profile','press',$json${"en":"Israel Hayom: an early profile","he":"ישראל היום: פרופיל מוקדם"}$json$,$json${"en":"Israel Hayom","he":"ישראל היום"}$json$,$json${"en":"","he":""}$json$,'https://www.israelhayom.co.il/article/296635',null,8),
+('makor-rishon-sderot','press',$json${"en":"In conversation with Aviad Friedman on Sderot","he":"בריאיון עם אביעד פרידמן על שדרות"}$json$,$json${"en":"Makor Rishon","he":"מקור ראשון"}$json$,$json${"en":"","he":""}$json$,'https://www.makorrishon.co.il/news/settlement/article/161849',null,9),
+('calbizjournal-hebrewu-clemson','press',$json${"en":"Hebrew University and Clemson forge agricultural partnership","he":""}$json$,$json${"en":"California Business Journal","he":""}$json$,$json${"en":"","he":""}$json$,'https://calbizjournal.com/hebrew-university-and-clemson-university-forge-agricultural-partnership/',null,10),
+('themarker-40-under-40','press',$json${"en":"TheMarker 40 Under 40","he":"40 הצעירים המבטיחים של דה־מרקר"}$json$,$json${"en":"TheMarker","he":"דה־מרקר"}$json$,$json${"en":"","he":""}$json$,'https://www.themarker.com/magazine/2025-01-01/ty-article-magazine/.premium/00000194-12c9-da93-a9dc-9ee9e4080000','2025-01-01',11),
+('calcalist-circles','press',$json${"en":"Calcalist: Circles","he":"כלכליסט: Circles"}$json$,$json${"en":"Calcalist","he":"כלכליסט"}$json$,$json${"en":"","he":""}$json$,'https://calcalist360.webflow.io/articles/circles',null,12),
+('atlwire-digitizing-industries','article',$json${"en":"Meet Amit Kochavi: Digitizing Traditional Industries","he":""}$json$,$json${"en":"ATL Wire","he":""}$json$,$json${"en":"","he":""}$json$,'https://atlwire.com/meet-amit-kochavi-digitizing-traditional-industries/',null,13),
+('cleveland-jewish-news-mou','press',$json${"en":"Hebrew U & Sapir sign MOU with Clemson","he":""}$json$,$json${"en":"Cleveland Jewish News","he":""}$json$,$json${"en":"","he":""}$json$,'https://www.clevelandjewishnews.com/jns/hebrew-u-sapir-college-sign-mou-with-clemson-to-tackle-agricultural-issues/article_8b3d14bb-bb15-51f2-8784-e6ef4211d1ff.html',null,14),
+('syp-studios-deskless-employees','article',$json${"en":"An Employee Engagement Platform for Deskless Employees","he":""}$json$,$json${"en":"SYP Studios","he":""}$json$,$json${"en":"","he":""}$json$,'https://sypstudios.com/amit-kochavi-providing-an-employee-engagement-platform-for-deskless-employees',null,15)
 on conflict (slug) do nothing;

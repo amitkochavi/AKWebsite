@@ -5,6 +5,7 @@
     "business": "Business",
     "philanthropy": "Philanthropy",
     "publicService": "Public Service",
+    "books": "Books",
     "media": "Media",
     "contact": "Contact"
   },
@@ -22,6 +23,11 @@
     "title": "Media & Writing",
     "empty": "No items published yet.",
     "external": "Read on the original site"
+  },
+  "books": {
+    "title": "Books",
+    "intro": "A selection of the books that have shaped how I think about business, leadership, and life.",
+    "empty": "No books listed yet."
   },
   "contact": {
     "name": "Name",
