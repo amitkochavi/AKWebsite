@@ -27,7 +27,7 @@ export function Header({ siteName }: { siteName: string }) {
 
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-6 md:flex"
+          className="hidden items-center gap-6 lg:flex"
         >
           {NAV_ITEMS.map((item) => (
             <Link
@@ -49,7 +49,7 @@ export function Header({ siteName }: { siteName: string }) {
             aria-label="Menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded border border-line md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded border border-line lg:hidden"
           >
             <span className="text-lg leading-none">{open ? "✕" : "☰"}</span>
           </button>
@@ -59,7 +59,7 @@ export function Header({ siteName }: { siteName: string }) {
       {open && (
         <nav
           aria-label="Mobile"
-          className="border-t border-line bg-white md:hidden"
+          className="border-t border-line bg-white lg:hidden"
         >
           <Container className="flex flex-col py-2">
             {NAV_ITEMS.map((item) => (
