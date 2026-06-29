@@ -34,7 +34,7 @@ export default async function ContactPage({ params }: Props) {
           <p className="mt-8 text-sm text-muted">
             <a
               href={`mailto:${settings.contact_email}`}
-              className="font-medium text-gold-dark hover:underline"
+              className="font-medium text-brand-dark hover:underline"
             >
               {settings.contact_email}
             </a>

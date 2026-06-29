@@ -24,7 +24,7 @@ export function LanguageSwitcher() {
           router.replace(pathname, { locale: target });
         })
       }
-      className="rounded border border-line px-3 py-1.5 text-sm font-medium text-navy transition-colors hover:bg-sand disabled:opacity-50"
+      className="rounded border border-line px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-cream disabled:opacity-50"
     >
       {t("switchLanguage")}
     </button>

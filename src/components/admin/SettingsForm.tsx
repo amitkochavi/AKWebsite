@@ -32,7 +32,7 @@ function Text({
 }) {
   return (
     <div>
-      <label className="mb-1 block text-sm font-semibold text-navy">
+      <label className="mb-1 block text-sm font-semibold text-ink">
         {label}
       </label>
       <input
@@ -57,7 +57,7 @@ function Area({
 }) {
   return (
     <div>
-      <label className="mb-1 block text-sm font-semibold text-navy">
+      <label className="mb-1 block text-sm font-semibold text-ink">
         {label}
       </label>
       {hint && <p className="mb-1 text-xs text-muted">{hint}</p>}

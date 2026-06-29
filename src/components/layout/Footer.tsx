@@ -17,15 +17,15 @@ export function Footer({
   const year = 2026;
 
   return (
-    <footer className="mt-20 border-t border-line bg-navy text-sand">
+    <footer className="mt-20 border-t border-line bg-ink text-cream">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <p className="font-serif text-2xl font-bold text-white">{siteName}</p>
-          <p className="mt-2 max-w-sm text-sm text-sand/80">{tagline}</p>
+          <p className="mt-2 max-w-sm text-sm text-cream/80">{tagline}</p>
         </div>
 
         <nav aria-label="Footer">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gold">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand">
             {t("footer.sections")}
           </p>
           <ul className="space-y-2">
@@ -33,7 +33,7 @@ export function Footer({
               <li key={item.key}>
                 <Link
                   href={item.href}
-                  className="text-sm text-sand/85 transition-colors hover:text-white"
+                  className="text-sm text-cream/85 transition-colors hover:text-white"
                 >
                   {t(`nav.${item.key}`)}
                 </Link>
@@ -44,7 +44,7 @@ export function Footer({
 
         {socialLinks.length > 0 && (
           <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gold">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand">
               {t("footer.connect")}
             </p>
             <ul className="space-y-2">
@@ -54,7 +54,7 @@ export function Footer({
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-sand/85 transition-colors hover:text-white"
+                    className="text-sm text-cream/85 transition-colors hover:text-white"
                   >
                     {s.platform}
                   </a>
@@ -67,7 +67,7 @@ export function Footer({
 
       <div className="border-t border-white/10 py-5">
         <Container>
-          <p className="text-xs text-sand/70">
+          <p className="text-xs text-cream/70">
             © {year} {siteName}. {t("footer.rights")}
           </p>
         </Container>

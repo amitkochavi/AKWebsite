@@ -68,7 +68,7 @@ export function MediaForm({ initial }: { initial: MediaItem }) {
       <section className="space-y-4 rounded-xl border border-line bg-white p-6">
         <div className="grid gap-4 sm:grid-cols-3">
           <div>
-            <label className="mb-1 block text-sm font-semibold text-navy">
+            <label className="mb-1 block text-sm font-semibold text-ink">
               Type
             </label>
             <select
@@ -86,7 +86,7 @@ export function MediaForm({ initial }: { initial: MediaItem }) {
             </select>
           </div>
           <div className="sm:col-span-2">
-            <label className="mb-1 block text-sm font-semibold text-navy">
+            <label className="mb-1 block text-sm font-semibold text-ink">
               Slug (URL)
             </label>
             <input
@@ -124,7 +124,7 @@ export function MediaForm({ initial }: { initial: MediaItem }) {
         />
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="mb-1 block text-sm font-semibold text-navy">
+            <label className="mb-1 block text-sm font-semibold text-ink">
               External link (optional)
             </label>
             <input
@@ -135,7 +135,7 @@ export function MediaForm({ initial }: { initial: MediaItem }) {
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-semibold text-navy">
+            <label className="mb-1 block text-sm font-semibold text-ink">
               Published date
             </label>
             <input

@@ -44,7 +44,7 @@ function ItemEditor({
   onRemove: () => void;
 }) {
   return (
-    <div className="space-y-3 rounded-lg border border-line bg-sand/60 p-4">
+    <div className="space-y-3 rounded-lg border border-line bg-cream/60 p-4">
       <div className="flex justify-end">
         <button
           type="button"
@@ -81,7 +81,7 @@ function ItemEditor({
             onChange={(body) => onChange({ ...item, body })}
           />
           <div>
-            <label className="mb-1 block text-sm font-semibold text-navy">
+            <label className="mb-1 block text-sm font-semibold text-ink">
               Link (optional, e.g. /business)
             </label>
             <input
@@ -118,7 +118,7 @@ function SingleBlock({
   return (
     <div className="space-y-4 rounded-xl border border-line bg-white p-5">
       <div className="flex items-center justify-between">
-        <span className="rounded bg-navy px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+        <span className="rounded bg-ink px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white">
           {block.type}
         </span>
         <div className="flex items-center gap-2 text-sm">
@@ -126,7 +126,7 @@ function SingleBlock({
             type="button"
             disabled={isFirst}
             onClick={() => onMove(-1)}
-            className="rounded px-2 py-1 hover:bg-sand disabled:opacity-30"
+            className="rounded px-2 py-1 hover:bg-cream disabled:opacity-30"
           >
             ↑
           </button>
@@ -134,7 +134,7 @@ function SingleBlock({
             type="button"
             disabled={isLast}
             onClick={() => onMove(1)}
-            className="rounded px-2 py-1 hover:bg-sand disabled:opacity-30"
+            className="rounded px-2 py-1 hover:bg-cream disabled:opacity-30"
           >
             ↓
           </button>
@@ -216,7 +216,7 @@ function SingleBlock({
             onClick={() =>
               onChange({ ...block, items: [...items, { title: { ...EMPTY } }] })
             }
-            className="rounded border border-dashed border-line px-3 py-2 text-sm font-medium text-navy hover:bg-sand"
+            className="rounded border border-dashed border-line px-3 py-2 text-sm font-medium text-ink hover:bg-cream"
           >
             + Add item
           </button>
@@ -267,7 +267,7 @@ export function BlockEditor({
             key={t.type}
             type="button"
             onClick={() => onChange([...blocks, newBlock(t.type)])}
-            className="rounded border border-line bg-white px-3 py-1.5 text-sm font-medium text-navy hover:bg-sand"
+            className="rounded border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink hover:bg-cream"
           >
             + {t.label}
           </button>

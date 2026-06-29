@@ -23,7 +23,7 @@ function ToolbarButton({
         onClick();
       }}
       className={`h-7 min-w-7 rounded px-2 text-xs font-semibold ${
-        active ? "bg-navy text-white" : "bg-white text-ink hover:bg-sand"
+        active ? "bg-ink text-white" : "bg-white text-ink hover:bg-cream"
       }`}
     >
       {children}
@@ -33,7 +33,7 @@ function ToolbarButton({
 
 function Toolbar({ editor }: { editor: Editor }) {
   return (
-    <div className="flex flex-wrap gap-1 rounded-t border border-line bg-sand p-1">
+    <div className="flex flex-wrap gap-1 rounded-t border border-line bg-cream p-1">
       <ToolbarButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         active={editor.isActive("bold")}
@@ -115,7 +115,7 @@ export function BilingualRichText({
   const v = value ?? EMPTY;
   return (
     <div>
-      <label className="mb-1 block text-sm font-semibold text-navy">
+      <label className="mb-1 block text-sm font-semibold text-ink">
         {label}
       </label>
       <div className="grid gap-3 sm:grid-cols-2">

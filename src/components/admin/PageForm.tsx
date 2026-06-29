@@ -40,7 +40,7 @@ export function PageForm({ initial }: { initial: Page }) {
         <Link
           href={viewPath}
           target="_blank"
-          className="text-sm font-medium text-gold-dark hover:underline"
+          className="text-sm font-medium text-brand-dark hover:underline"
         >
           View page ↗
         </Link>
@@ -66,7 +66,7 @@ export function PageForm({ initial }: { initial: Page }) {
             onChange={(cta_label) => setHero({ cta_label })}
           />
           <div>
-            <label className="mb-1 block text-sm font-semibold text-navy">
+            <label className="mb-1 block text-sm font-semibold text-ink">
               Button link (optional)
             </label>
             <input

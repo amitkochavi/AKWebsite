@@ -35,7 +35,7 @@ export default function AdminHome() {
             href={c.href}
             className="rounded-xl border border-line bg-white p-6 transition-shadow hover:shadow-md"
           >
-            <h2 className="text-lg font-bold text-navy">{c.title}</h2>
+            <h2 className="text-lg font-bold text-ink">{c.title}</h2>
             <p className="mt-2 text-sm text-muted">{c.desc}</p>
           </Link>
         ))}
