@@ -7,7 +7,9 @@ import { Container } from "../ui/Container";
 
 export async function LatestMedia({ locale }: { locale: Locale }) {
   const t = await getTranslations();
-  const items = (await getMediaItems()).slice(0, 3);
+  const items = (await getMediaItems())
+    .filter((m) => m.kind !== "reading")
+    .slice(0, 3);
   if (items.length === 0) return null;
 
   return (
@@ -23,23 +25,38 @@ export async function LatestMedia({ locale }: { locale: Locale }) {
           </Link>
         </div>
         <div className="grid gap-6 sm:grid-cols-3">
-          {items.map((m) => (
-            <Link
-              key={m.id}
-              href={`/media/${m.slug}`}
-              className="group block rounded-lg border border-line p-6 transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-brand-dark">
-                {m.kind}
-              </p>
-              <h3 className="mt-2 text-lg font-bold text-ink">
-                {pick(m.title, locale)}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                {pick(m.excerpt, locale)}
-              </p>
-            </Link>
-          ))}
+          {items.map((m) => {
+            const inner = (
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-dark">
+                  {m.kind}
+                </p>
+                <h3 className="mt-2 text-lg font-bold text-ink">
+                  {pick(m.title, locale)}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">
+                  {pick(m.excerpt, locale)}
+                </p>
+              </>
+            );
+            const cls =
+              "group block rounded-2xl border border-line p-6 transition-shadow hover:shadow-md";
+            return m.external_url ? (
+              <a
+                key={m.id}
+                href={m.external_url}
+                target="_blank"
+                rel="noopener"
+                className={cls}
+              >
+                {inner}
+              </a>
+            ) : (
+              <Link key={m.id} href={`/media/${m.slug}`} className={cls}>
+                {inner}
+              </Link>
+            );
+          })}
         </div>
       </Container>
     </section>

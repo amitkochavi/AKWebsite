@@ -18,8 +18,12 @@ type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export async function generateStaticParams() {
   const items = await getMediaItems();
+  // Only site-native items get a detail page; books live on /books and press
+  // items link out to their source.
   return routing.locales.flatMap((locale) =>
-    items.map((m) => ({ locale, slug: m.slug })),
+    items
+      .filter((m) => !m.external_url && m.kind !== "reading")
+      .map((m) => ({ locale, slug: m.slug })),
   );
 }
 

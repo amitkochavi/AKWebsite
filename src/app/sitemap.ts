@@ -8,13 +8,17 @@ const STATIC_PATHS = [
   "/business",
   "/philanthropy",
   "/public-service",
+  "/books",
   "/media",
   "/contact",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const media = await getMediaItems();
-  const paths = [...STATIC_PATHS, ...media.map((m) => `/media/${m.slug}`)];
+  const detailPaths = media
+    .filter((m) => !m.external_url && m.kind !== "reading")
+    .map((m) => `/media/${m.slug}`);
+  const paths = [...STATIC_PATHS, ...detailPaths];
 
   return paths.map((p) => ({
     url: `${SITE_URL}/en${p}`,

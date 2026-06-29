@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { dir, pick } from "@/lib/i18n";
-import { getSettings } from "@/lib/content";
+import { getMediaItems, getSettings } from "@/lib/content";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -32,6 +32,11 @@ export default async function LocaleLayout({
   const l = locale as Locale;
   const siteName = pick(settings.site_name, l);
 
+  // Third-party coverage → Person `subjectOf` for entity authority.
+  const press = (await getMediaItems())
+    .filter((m) => m.external_url)
+    .map((m) => ({ url: m.external_url as string, name: pick(m.title, l) }));
+
   return (
     <html lang={locale} dir={dir(l)}>
       <head>
@@ -56,7 +61,9 @@ export default async function LocaleLayout({
             socialLinks={settings.social_links}
           />
         </NextIntlClientProvider>
-        <JsonLd data={[personSchema(settings, l), websiteSchema(settings, l)]} />
+        <JsonLd
+          data={[personSchema(settings, l, press), websiteSchema(settings, l)]}
+        />
       </body>
     </html>
   );
