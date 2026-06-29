@@ -46,16 +46,16 @@ export default async function MediaPage({ params }: Props) {
           <ul className="max-w-3xl divide-y divide-line border-t border-line">
             {items.map((m) => {
               const row = (
-                <span className="flex items-baseline justify-between gap-4 py-4">
-                  <span>
-                    <span className="font-medium text-ink group-hover:text-brand-dark">
+                <span className="flex items-start justify-between gap-3 py-4">
+                  <span className="min-w-0">
+                    <span className="block font-medium text-ink group-hover:text-brand-dark">
                       {pick(m.title, l)}
                     </span>
-                    <span className="ms-2 text-sm text-muted">
-                      — {pick(m.excerpt, l)}
+                    <span className="mt-0.5 block text-sm text-muted">
+                      {pick(m.excerpt, l)}
                     </span>
                   </span>
-                  <span className="shrink-0 text-sm text-muted">↗</span>
+                  <span className="shrink-0 pt-0.5 text-sm text-muted">↗</span>
                 </span>
               );
               return (

@@ -237,29 +237,35 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
         },
       },
       {
-        id: "phil-focus",
+        id: "phil-foundations",
         type: "cards",
-        heading: { en: "Areas of focus", he: "תחומי מיקוד" },
+        heading: { en: "Our family foundations", he: "קרנות המשפחה שלנו" },
         items: [
           {
-            title: { en: "Education", he: "חינוך" },
+            title: {
+              en: "The Buchman Heyman Foundation",
+              he: "קרן בוכמן־היימן",
+            },
             body: {
-              en: "Scholarships and programs that open doors for young people.",
-              he: "מלגות ותכניות שפותחות דלתות לצעירים.",
+              en: "Founded in 1942 by Sara Buchman.",
+              he: "נוסדה ב-1942 על ידי שרה בוכמן.",
             },
           },
           {
-            title: { en: "Community", he: "קהילה" },
-            body: {
-              en: "Strengthening the social fabric of southern Israel.",
-              he: "חיזוק המרקם החברתי של דרום הארץ.",
+            title: {
+              en: "The Herb & Sharon Glaser Foundation",
+              he: "קרן הרב ושרון גלייזר",
             },
+            body: { en: "", he: "" },
           },
           {
-            title: { en: "Resilience", he: "חוסן" },
+            title: {
+              en: "The Max Factor Family Foundation",
+              he: "קרן משפחת מקס פקטור",
+            },
             body: {
-              en: "Supporting families and institutions in times of need.",
-              he: "תמיכה במשפחות ובמוסדות בעת צרה.",
+              en: "Continuing the legacy of Max Factor Sr.",
+              he: "ממשיכה את מורשתו של מקס פקטור האב.",
             },
           },
         ],
@@ -293,27 +299,46 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
       {
         id: "ps-initiatives",
         type: "cards",
-        heading: { en: "Where the work focuses", he: "במה מתמקד הפועל" },
+        heading: {
+          en: "Initiatives since October 7th",
+          he: "יוזמות מאז ה-7 באוקטובר",
+        },
         items: [
           {
-            title: { en: "Recovery & Resilience", he: "שיקום וחוסן" },
+            title: { en: "Rimon Music School", he: "בית הספר למוזיקה רימון" },
             body: {
-              en: "Helping the city and its residents rebuild and thrive.",
-              he: "סיוע לעיר ולתושביה להשתקם ולשגשג.",
+              en: "Founded a music school in Sderot. Budget ≈ ₪30M.",
+              he: "הקמת בית ספר למוזיקה בשדרות. תקציב של כ-30 מיליון ש\"ח.",
             },
           },
           {
-            title: { en: "Youth & Education", he: "נוער וחינוך" },
+            title: {
+              en: "Seven Bilingual Kindergartens",
+              he: "שבעה גני ילדים דו-לשוניים",
+            },
             body: {
-              en: "Investing in the next generation of Sderot’s leaders.",
-              he: "השקעה בדור הבא של מנהיגי שדרות.",
+              en: "English–Hebrew kindergartens, with a multi-million-shekel budget.",
+              he: "גנים דו-לשוניים באנגלית ובעברית, בתקציב של מיליוני שקלים.",
             },
           },
           {
-            title: { en: "Community", he: "קהילה" },
+            title: {
+              en: "Faculty of Technology, Sapir Academic College",
+              he: "הפקולטה לטכנולוגיה במכללת ספיר",
+            },
             body: {
-              en: "Programs that bring people together and create opportunity.",
-              he: "תכניות שמקרבות בין אנשים ויוצרות הזדמנות.",
+              en: "Founding-team member of a new technology faculty in Sderot — 15,000 m² (≈161,500 sq ft) beside the train station. Budget ≈ ₪500M.",
+              he: "חבר צוות מייסד של פקולטה חדשה לטכנולוגיה בשדרות — 15,000 מ\"ר (כ-161,500 רגל רבוע) סמוך לתחנת הרכבת. תקציב של כ-500 מיליון ש\"ח.",
+            },
+          },
+          {
+            title: {
+              en: "Tech Relocation to the Gaza Envelope",
+              he: "רילוקיישן של הייטק לעוטף עזה",
+            },
+            body: {
+              en: "A program bringing tech employees from central Israel to Sderot and the Gaza-envelope region — a ₪100M effort to attract over 400 families.",
+              he: "תוכנית להבאת עובדי הייטק ממרכז הארץ לשדרות ולעוטף עזה — מאמץ בתקציב של 100 מיליון ש\"ח למשיכת למעלה מ-400 משפחות.",
             },
           },
         ],
@@ -432,6 +457,12 @@ export const FALLBACK_BOOKS: MediaItem[] = [
 ];
 
 export const FALLBACK_PRESS: MediaItem[] = [
+  press(16, {
+    slug: "walla-rimon-music-school",
+    title: loc("Sderot’s Rimon Music School", "בית הספר למוזיקה רימון בשדרות"),
+    outlet: loc("Walla Finance", "וואלה! פיננסים"),
+    url: "https://finance.walla.co.il/item/3732149",
+  }),
   press(11, {
     slug: "themarker-40-under-40",
     title: loc("TheMarker 40 Under 40", "40 הצעירים המבטיחים של דה־מרקר"),
