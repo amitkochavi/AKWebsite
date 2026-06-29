@@ -53,16 +53,16 @@ export default async function MediaItemPage({ params }: Props) {
 
   return (
     <article>
-      <section className="bg-navy text-white">
-        <Container className="py-16 sm:py-20">
-          <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+      <section className="border-b border-line bg-white">
+        <Container className="py-14 sm:py-20">
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-dark">
             {item.kind}
           </p>
-          <h1 className="mt-3 max-w-3xl text-3xl font-bold !text-white sm:text-4xl">
+          <h1 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             {pick(item.title, l)}
           </h1>
           {item.published_at && (
-            <time className="mt-3 block text-sm text-sand/70" dateTime={item.published_at}>
+            <time className="mt-3 block text-sm text-muted" dateTime={item.published_at}>
               {item.published_at}
             </time>
           )}
@@ -70,7 +70,7 @@ export default async function MediaItemPage({ params }: Props) {
       </section>
 
       <Container className="py-12">
-        <p className="mb-6 max-w-2xl text-lg leading-relaxed text-navy">
+        <p className="mb-6 max-w-2xl text-lg leading-relaxed text-ink">
           {pick(item.excerpt, l)}
         </p>
         <div className="prose-content max-w-2xl leading-relaxed text-ink">
@@ -86,7 +86,7 @@ export default async function MediaItemPage({ params }: Props) {
             href={item.external_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block rounded bg-gold px-5 py-2.5 text-sm font-semibold text-navy hover:bg-gold-dark hover:text-white"
+            className="mt-8 inline-block rounded bg-brand px-5 py-2.5 text-sm font-semibold text-ink hover:bg-brand-dark hover:text-white"
           >
             {t("media.external")} →
           </a>
@@ -95,7 +95,7 @@ export default async function MediaItemPage({ params }: Props) {
         <div className="mt-12">
           <Link
             href="/media"
-            className="text-sm font-semibold text-gold-dark hover:underline"
+            className="text-sm font-semibold text-brand-dark hover:underline"
           >
             ← {t("common.backToMedia")}
           </Link>

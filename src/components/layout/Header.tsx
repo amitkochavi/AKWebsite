@@ -20,7 +20,7 @@ export function Header({ siteName }: { siteName: string }) {
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
-          className="font-serif text-xl font-bold tracking-tight text-navy"
+          className="font-serif text-xl font-bold tracking-tight text-ink"
         >
           {siteName}
         </Link>
@@ -33,8 +33,8 @@ export function Header({ siteName }: { siteName: string }) {
             <Link
               key={item.key}
               href={item.href}
-              className={`text-sm font-medium transition-colors hover:text-gold-dark ${
-                isActive(item.href) ? "text-gold-dark" : "text-ink"
+              className={`text-sm font-medium transition-colors hover:text-brand-dark ${
+                isActive(item.href) ? "text-brand-dark" : "text-ink"
               }`}
             >
               {t(item.key)}
@@ -68,7 +68,7 @@ export function Header({ siteName }: { siteName: string }) {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`py-2.5 text-base font-medium ${
-                  isActive(item.href) ? "text-gold-dark" : "text-ink"
+                  isActive(item.href) ? "text-brand-dark" : "text-ink"
                 }`}
               >
                 {t(item.key)}

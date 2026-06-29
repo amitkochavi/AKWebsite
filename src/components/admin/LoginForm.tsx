@@ -36,7 +36,7 @@ export function LoginForm() {
   }
 
   const inputClass =
-    "w-full rounded border border-line bg-white px-3 py-2.5 text-base text-ink focus:border-gold";
+    "w-full rounded border border-line bg-white px-3 py-2.5 text-base text-ink focus:border-brand";
 
   return (
     <div className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6">
@@ -81,7 +81,7 @@ export function LoginForm() {
           <button
             type="submit"
             disabled={loading || !configured}
-            className="w-full rounded bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-light disabled:opacity-60"
+            className="w-full rounded bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-soft disabled:opacity-60"
           >
             {loading ? "Signing in…" : "Sign in"}
           </button>

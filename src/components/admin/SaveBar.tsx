@@ -14,12 +14,12 @@ export function SaveBar({
   extra?: React.ReactNode;
 }) {
   return (
-    <div className="sticky bottom-0 z-10 mt-8 flex items-center gap-4 border-t border-line bg-sand/95 py-4 backdrop-blur">
+    <div className="sticky bottom-0 z-10 mt-8 flex items-center gap-4 border-t border-line bg-cream/95 py-4 backdrop-blur">
       <button
         type="button"
         onClick={onSave}
         disabled={state === "saving"}
-        className="rounded bg-navy px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy-light disabled:opacity-60"
+        className="rounded bg-ink px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink-soft disabled:opacity-60"
       >
         {state === "saving" ? "Saving…" : "Save changes"}
       </button>

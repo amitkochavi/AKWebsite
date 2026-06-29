@@ -30,7 +30,7 @@ export function ImageUploader({
 
   return (
     <div>
-      <label className="mb-1 block text-sm font-semibold text-navy">
+      <label className="mb-1 block text-sm font-semibold text-ink">
         {label}
       </label>
       {value && (

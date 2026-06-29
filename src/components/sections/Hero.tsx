@@ -3,34 +3,37 @@ import { pick } from "@/lib/i18n";
 import type { Hero as HeroType, Locale } from "@/types/content";
 import { Container } from "../ui/Container";
 
+const ACCENTS = ["#e8843a", "#9b6dff", "#1fb6a6", "#f45d9e", "#4c8df6"];
+
 export function Hero({ hero, locale }: { hero: HeroType; locale: Locale }) {
   const title = pick(hero.title, locale);
   const subtitle = pick(hero.subtitle, locale);
   const cta = pick(hero.cta_label, locale);
 
   return (
-    <section className="relative overflow-hidden bg-navy text-white">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-20"
-        style={{
-          background:
-            "radial-gradient(60% 60% at 80% 0%, var(--color-gold) 0%, transparent 60%)",
-        }}
-      />
-      <Container className="relative py-20 sm:py-28">
-        <h1 className="max-w-3xl text-4xl font-bold !text-white sm:text-5xl lg:text-6xl">
+    <section className="border-b border-line bg-white">
+      <Container className="py-16 sm:py-24">
+        <div className="flex gap-2" aria-hidden>
+          {ACCENTS.map((c) => (
+            <span
+              key={c}
+              className="h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: c }}
+            />
+          ))}
+        </div>
+        <h1 className="mt-6 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand/85">
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
             {subtitle}
           </p>
         )}
         {cta && hero.cta_href && (
           <Link
             href={hero.cta_href}
-            className="mt-8 inline-block rounded bg-gold px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-white"
+            className="mt-8 inline-block rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-soft"
           >
             {cta}
           </Link>

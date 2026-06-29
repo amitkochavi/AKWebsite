@@ -23,10 +23,10 @@ export default function PagesListPage() {
           <li key={p.key}>
             <Link
               href={`/admin/pages/${p.key}`}
-              className="flex items-center justify-between px-6 py-4 transition-colors hover:bg-sand"
+              className="flex items-center justify-between px-6 py-4 transition-colors hover:bg-cream"
             >
-              <span className="font-medium text-navy">{p.label}</span>
-              <span className="text-sm text-gold-dark">Edit →</span>
+              <span className="font-medium text-ink">{p.label}</span>
+              <span className="text-sm text-brand-dark">Edit →</span>
             </Link>
           </li>
         ))}

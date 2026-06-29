@@ -30,9 +30,9 @@ export default async function MediaPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-navy text-white">
-        <Container className="py-16 sm:py-20">
-          <h1 className="text-4xl font-bold !text-white sm:text-5xl">
+      <section className="border-b border-line bg-white">
+        <Container className="py-14 sm:py-20">
+          <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl">
             {t("media.title")}
           </h1>
         </Container>
@@ -49,10 +49,10 @@ export default async function MediaPage({ params }: Props) {
                 href={`/media/${m.slug}`}
                 className="group flex flex-col rounded-lg border border-line p-6 transition-shadow hover:shadow-md"
               >
-                <p className="text-xs font-semibold uppercase tracking-wider text-gold-dark">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-dark">
                   {m.kind}
                 </p>
-                <h2 className="mt-2 text-xl font-bold text-navy">
+                <h2 className="mt-2 text-xl font-bold text-ink">
                   {pick(m.title, l)}
                 </h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">

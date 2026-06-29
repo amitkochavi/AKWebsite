@@ -12,7 +12,7 @@ export default async function MediaListPage() {
         <h1 className="text-2xl font-bold">Media & Writing</h1>
         <Link
           href="/admin/media/new"
-          className="rounded bg-navy px-4 py-2 text-sm font-semibold text-white hover:bg-navy-light"
+          className="rounded bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-ink-soft"
         >
           + New item
         </Link>
@@ -22,13 +22,13 @@ export default async function MediaListPage() {
           <li key={m.id}>
             <Link
               href={`/admin/media/${m.id}`}
-              className="flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-sand"
+              className="flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-cream"
             >
               <span>
-                <span className="font-medium text-navy">
+                <span className="font-medium text-ink">
                   {pick(m.title, "en") || "(untitled)"}
                 </span>
-                <span className="ms-2 text-xs uppercase tracking-wide text-gold-dark">
+                <span className="ms-2 text-xs uppercase tracking-wide text-brand-dark">
                   {m.kind}
                 </span>
               </span>
@@ -38,7 +38,7 @@ export default async function MediaListPage() {
                     Draft
                   </span>
                 )}
-                <span className="text-gold-dark">Edit →</span>
+                <span className="text-brand-dark">Edit →</span>
               </span>
             </Link>
           </li>

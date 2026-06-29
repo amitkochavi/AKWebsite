@@ -120,26 +120,37 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     hero: {
       title: { en: "About Amit Kochavi", he: "אודות עמית כוכבי" },
       subtitle: {
-        en: "Entrepreneur, philanthropist, and public servant.",
-        he: "יזם, פילנתרופ ואיש ציבור.",
+        en: "Entrepreneur, investor, and public servant — building between Tel Aviv and Los Angeles.",
+        he: "יזם, משקיע ואיש ציבור — בונה בין תל אביב ללוס אנג'לס.",
       },
     },
     blocks: [
       {
         id: "about-bio",
         type: "text",
-        heading: { en: "Biography", he: "ביוגרפיה" },
         body: {
-          en: "Amit L. Kochavi is an entrepreneur and business leader whose career bridges enterprise, philanthropy, and public service. He builds and supports companies that create opportunity, continues a family tradition of giving that now spans four generations, and devotes himself to the people of Sderot and southern Israel.",
-          he: "עמית כוכבי הוא יזם ומנהיג עסקי שהקריירה שלו מגשרת בין יזמות, פילנתרופיה ושירות ציבורי. הוא בונה ותומך בחברות היוצרות הזדמנות, ממשיך מסורת משפחתית של נתינה המשתרעת על פני ארבעה דורות, ומקדיש את עצמו לתושבי שדרות ודרום הארץ.",
+          en: `<p>I was born in Tel Aviv on December 10th, 1997, into a family that taught me two things early: that wealth is a responsibility before it is a privilege, and that nothing you inherit matters as much as what you build.</p>
+<p>I'm a fourth-generation entrepreneur. On one side of my family stands Max Factor Sr., who left Łódź for Los Angeles and built one of the most recognized names in the history of beauty — proof that an immigrant with a craft and conviction can shape global culture. On the other side, generations of builders and investors in Israel and the United States who developed real estate, backed businesses, and gave back to the communities that made their success possible. Growing up between Tel Aviv and Los Angeles, I absorbed both worlds: Israeli directness and ambition, and American scale and institution-building.</p>
+<p>In March 2019, at 21, I founded my first company, Circles Ltd. We started with an innovation-management platform, sold it to our first customers, and failed. So we did what founders do — we listened, pivoted, and rebuilt the company as Cormi, a workflow and forms platform serving businesses in construction and manufacturing, backed by leading Israeli investors including the owner of Tidhar, one of Israel's largest construction groups. The lesson of those years stays with me: resilience is not a slogan. It is the daily practice of showing up after the plan breaks.</p>
+<p>Today I lead Starwell Holdings, the platform through which I build, invest, and advise — from technology services consolidation to large-scale urban development in Tel Aviv-Jaffa.</p>
+<p>But the chapter that changed my life began on October 7th, 2023. In the aftermath of that day, I joined the Mayor of Sderot as a senior advisor, working alongside the Tkuma Directorate in the Prime Minister's Office to help structure the city's economic recovery and long-term development plan. Sderot taught me what business never could: that the hardest, most meaningful work is rebuilding a community's belief in its own future.</p>
+<p>That work sits at the center of everything I do now — alongside board service at the Buchman Heyman Foundation and the Sharon &amp; Herb Glaser Foundation, membership in TAU Aurion, Tel Aviv University's next-generation leadership community, and participation in Voice of the People, the President of Israel's global council on the future of the Jewish people.</p>
+<p>I split my time between Tel Aviv and Los Angeles. I believe in free markets, strong security, a pluralistic Israel, and an unbreakable bond between Israel and the Jewish Diaspora. And I believe the next generation of Israeli leadership has to be built the old way: by doing the work first.</p>`,
+          he: `<p>נולדתי בתל אביב ב-10 בדצמבר 1997, למשפחה שלימדה אותי שני דברים כבר בגיל צעיר: שעושר הוא אחריות לפני שהוא זכות, ושדבר מכל מה שאתה יורש אינו חשוב כמו מה שאתה בונה בעצמך.</p>
+<p>אני יזם מהדור הרביעי. בצד אחד של משפחתי עומד מקס פקטור האב, שעזב את לודז' לטובת לוס אנג'לס ובנה אחד מהשמות המוכרים ביותר בתולדות עולם היופי — הוכחה לכך שמהגר בעל מלאכה והכרה יכול לעצב תרבות גלובלית. בצד השני, דורות של בונים ומשקיעים בישראל ובארצות הברית, שפיתחו נדל"ן, גיבו עסקים, והחזירו לקהילות שאפשרו את הצלחתם. כשגדלתי בין תל אביב ללוס אנג'לס, ספגתי את שני העולמות: הישירות והשאפתנות הישראלית, והעוצמה ובניית המוסדות האמריקאית.</p>
+<p>במרץ 2019, בגיל 21, הקמתי את החברה הראשונה שלי, Circles Ltd. התחלנו עם פלטפורמה לניהול חדשנות, מכרנו ללקוחותינו הראשונים — ונכשלנו. אז עשינו את מה שיזמים עושים: הקשבנו, ביצענו פיבוט, ובנינו מחדש את החברה כ-Cormi, פלטפורמת תהליכים וטפסים המשרתת עסקים בתחומי הבנייה והייצור, בגיבוי משקיעים ישראליים מובילים ובהם הבעלים של תדהר, אחת מקבוצות הבנייה הגדולות בישראל. הלקח של אותן שנים נותר עמי: חוסן אינו סיסמה. הוא התרגול היומיומי של לקום שוב לאחר שהתוכנית מתנפצת.</p>
+<p>כיום אני עומד בראש Starwell Holdings, הפלטפורמה שדרכה אני בונה, משקיע ומייעץ — מאיחוד שירותי טכנולוגיה ועד התחדשות עירונית בקנה מידה גדול בתל אביב-יפו.</p>
+<p>אך הפרק ששינה את חיי החל ב-7 באוקטובר 2023. בעקבות אותו יום הצטרפתי לראש עיריית שדרות כיועץ בכיר, ופעלתי לצד מינהלת תקומה במשרד ראש הממשלה כדי לעצב את תוכנית ההתאוששות הכלכלית והפיתוח ארוך-הטווח של העיר. שדרות לימדה אותי את מה שהעסקים מעולם לא יכלו: שהעבודה הקשה והמשמעותית ביותר היא לשקם את אמונתה של קהילה בעתידה.</p>
+<p>עבודה זו ניצבת במרכז כל מה שאני עושה כיום — לצד חברות בדירקטוריונים של קרן בוכמן-היימן וקרן שרון והרב גלייזר, חברות ב-TAU Aurion, קהילת המנהיגות הצעירה של אוניברסיטת תל אביב, והשתתפות ב-Voice of the People, מועצת נשיא המדינה העולמית לעתיד העם היהודי.</p>
+<p>אני מחלק את זמני בין תל אביב ללוס אנג'לס. אני מאמין בשווקים חופשיים, בביטחון חזק, בישראל פלורליסטית, ובברית בל-תינתק בין ישראל ליהדות התפוצות. ואני מאמין שעל הדור הבא של המנהיגות הישראלית להיבנות בדרך הישנה: קודם כול עושים את העבודה.</p>`,
         },
       },
       {
         id: "about-values",
         type: "quote",
         body: {
-          en: "I believe that the measure of success is not only what you build, but who you lift along the way.",
-          he: "אני מאמין שמדד ההצלחה אינו רק במה שאתה בונה, אלא במי שאתה מרים יחד איתך בדרך.",
+          en: "Wealth is a responsibility before it is a privilege — and nothing you inherit matters as much as what you build.",
+          he: "עושר הוא אחריות לפני שהוא זכות — ודבר ממה שאתה יורש אינו חשוב כמו מה שאתה בונה בעצמך.",
         },
         attribution: { en: "Amit Kochavi", he: "עמית כוכבי" },
       },

@@ -4,6 +4,9 @@ import { pick } from "@/lib/i18n";
 import type { Block, Locale } from "@/types/content";
 import { Container } from "../ui/Container";
 
+// Playful accent palette, cycled across cards and stats.
+const ACCENTS = ["#e8843a", "#9b6dff", "#1fb6a6", "#f45d9e", "#4c8df6", "#f4b740"];
+
 /** Renders the HTML body produced by the dashboard rich-text editor, or plain
  * text as a paragraph when no markup is present. */
 function Body({ html }: { html: string }) {
@@ -11,7 +14,7 @@ function Body({ html }: { html: string }) {
   const looksLikeHtml = /<\/?[a-z][\s\S]*>/i.test(html);
   return (
     <div
-      className="prose-content max-w-2xl text-base leading-relaxed text-muted"
+      className="prose-content max-w-2xl text-base leading-relaxed text-ink-soft"
       {...(looksLikeHtml
         ? { dangerouslySetInnerHTML: { __html: html } }
         : { children: <p>{html}</p> })}
@@ -27,8 +30,8 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
       return (
         <section className="py-12">
           <Container>
-            <blockquote className="border-s-4 border-gold ps-6">
-              <p className="font-serif text-2xl leading-snug text-navy sm:text-3xl">
+            <blockquote className="border-s-4 border-brand ps-6">
+              <p className="text-2xl font-semibold leading-snug text-ink sm:text-3xl">
                 “{pick(block.body, locale)}”
               </p>
               {block.attribution && (
@@ -47,8 +50,12 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
           <Container>
             <div className="grid gap-8 sm:grid-cols-3">
               {(block.items ?? []).map((item, i) => (
-                <div key={i} className="border-t-2 border-gold pt-4">
-                  <p className="font-serif text-4xl font-bold text-navy">
+                <div
+                  key={i}
+                  className="border-t-2 pt-4"
+                  style={{ borderColor: ACCENTS[i % ACCENTS.length] }}
+                >
+                  <p className="text-4xl font-bold text-ink">
                     {pick(item.value, locale)}
                   </p>
                   <p className="mt-1 text-sm text-muted">
@@ -63,16 +70,24 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
 
     case "cards":
       return (
-        <section className="bg-sand py-16">
+        <section className="bg-cream py-16">
           <Container>
             {heading && (
               <h2 className="mb-8 text-2xl font-bold sm:text-3xl">{heading}</h2>
             )}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {(block.items ?? []).map((item, i) => {
+                const color = ACCENTS[i % ACCENTS.length];
                 const inner = (
                   <>
-                    <h3 className="text-lg font-bold text-navy">
+                    <span
+                      className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl text-white"
+                      style={{ backgroundColor: color }}
+                      aria-hidden
+                    >
+                      <span className="h-2.5 w-2.5 rounded-full bg-white" />
+                    </span>
+                    <h3 className="text-lg font-bold text-ink">
                       {pick(item.title, locale)}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -84,17 +99,20 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
                   <Link
                     key={i}
                     href={item.href}
-                    className="group block rounded-lg border border-line bg-white p-6 transition-shadow hover:shadow-md"
+                    className="group block rounded-2xl border border-line bg-white p-6 transition-shadow hover:shadow-md"
                   >
                     {inner}
-                    <span className="mt-4 inline-block text-sm font-semibold text-gold-dark group-hover:underline">
+                    <span
+                      className="mt-4 inline-block text-sm font-semibold group-hover:underline"
+                      style={{ color }}
+                    >
                       →
                     </span>
                   </Link>
                 ) : (
                   <div
                     key={i}
-                    className="rounded-lg border border-line bg-white p-6"
+                    className="rounded-2xl border border-line bg-white p-6"
                   >
                     {inner}
                   </div>
@@ -110,7 +128,7 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
         <section className="py-12">
           <Container>
             <figure>
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
                 <Image
                   src={block.image}
                   alt={pick(block.caption, locale) || heading}

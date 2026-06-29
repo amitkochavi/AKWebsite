@@ -35,7 +35,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded border border-line bg-white px-3 py-2.5 text-base text-ink focus:border-gold";
+    "w-full rounded border border-line bg-white px-3 py-2.5 text-base text-ink focus:border-brand";
 
   return (
     <form onSubmit={onSubmit} className="max-w-xl space-y-4">
@@ -72,7 +72,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="rounded bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-light disabled:opacity-60"
+        className="rounded bg-ink px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ink-soft disabled:opacity-60"
       >
         {status === "sending" ? t("sending") : t("send")}
       </button>

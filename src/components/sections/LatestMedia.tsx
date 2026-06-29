@@ -17,7 +17,7 @@ export async function LatestMedia({ locale }: { locale: Locale }) {
           <h2 className="text-2xl font-bold sm:text-3xl">{t("media.title")}</h2>
           <Link
             href="/media"
-            className="shrink-0 text-sm font-semibold text-gold-dark hover:underline"
+            className="shrink-0 text-sm font-semibold text-brand-dark hover:underline"
           >
             {t("common.allArticles")} →
           </Link>
@@ -29,10 +29,10 @@ export async function LatestMedia({ locale }: { locale: Locale }) {
               href={`/media/${m.slug}`}
               className="group block rounded-lg border border-line p-6 transition-shadow hover:shadow-md"
             >
-              <p className="text-xs font-semibold uppercase tracking-wider text-gold-dark">
+              <p className="text-xs font-semibold uppercase tracking-wider text-brand-dark">
                 {m.kind}
               </p>
-              <h3 className="mt-2 text-lg font-bold text-navy">
+              <h3 className="mt-2 text-lg font-bold text-ink">
                 {pick(m.title, locale)}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
