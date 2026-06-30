@@ -121,7 +121,12 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
         ],
       },
     ],
-    seo: {},
+    seo: {
+      title: {
+        en: "Amit Kochavi — Business, Philanthropy & Public Service",
+        he: "עמית כוכבי — עסקים, פילנתרופיה ושירות ציבורי",
+      },
+    },
     is_published: true,
     sort_order: 0,
   },
