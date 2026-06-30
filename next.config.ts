@@ -17,6 +17,20 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [];
   },
+  async headers() {
+    // Belt-and-suspenders: tell every crawler not to index the dashboard or
+    // API, at the HTTP level (stronger than the meta tag, covers non-HTML too).
+    return [
+      {
+        source: "/admin/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/api/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
