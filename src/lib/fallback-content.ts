@@ -25,8 +25,7 @@ export const FALLBACK_SETTINGS: SiteSettings = {
   },
   contact_email: "office@amitkochavi.com",
   social_links: [
-    { platform: "LinkedIn", url: "https://www.linkedin.com/in/amitkochavi" },
-    { platform: "X", url: "https://x.com/amitkochavi" },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/amitkochavi/" },
   ],
   seo_defaults: {
     title: {
@@ -51,10 +50,7 @@ export const FALLBACK_SETTINGS: SiteSettings = {
       en: "Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.",
       he: "עמית כוכבי הוא יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לחיזוק שדרות וקהילות הדרום.",
     },
-    sameAs: [
-      "https://www.linkedin.com/in/amitkochavi",
-      "https://x.com/amitkochavi",
-    ],
+    sameAs: ["https://www.linkedin.com/in/amitkochavi/"],
     knowsAbout: [
       "Entrepreneurship",
       "Investment",

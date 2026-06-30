@@ -12,9 +12,9 @@ values (
   $json${"en":"Amit Kochavi","he":"עמית כוכבי"}$json$,
   $json${"en":"Business. Philanthropy. Public Service.","he":"עסקים. פילנתרופיה. שירות ציבורי."}$json$,
   'office@amitkochavi.com',
-  $json$[{"platform":"LinkedIn","url":"https://www.linkedin.com/in/amitkochavi"},{"platform":"X","url":"https://x.com/amitkochavi"}]$json$,
+  $json$[{"platform":"LinkedIn","url":"https://www.linkedin.com/in/amitkochavi/"}]$json$,
   $json${"title":{"en":"Amit Kochavi — Business, Philanthropy & Public Service","he":"עמית כוכבי — עסקים, פילנתרופיה ושירות ציבורי"},"description":{"en":"The official website of Amit L. Kochavi — entrepreneur and business leader, fourth-generation philanthropist, and public servant committed to the people of Sderot and the Negev.","he":"האתר הרשמי של עמית כוכבי — יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לתושבי שדרות והנגב."}}$json$,
-  $json${"name":"Amit Kochavi","alternateName":["Amit L. Kochavi","Amit Lev Kochavi","עמית כוכבי","עמית לב כוכבי"],"jobTitle":{"en":"Entrepreneur & Public Servant","he":"יזם ואיש ציבור"},"description":{"en":"Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.","he":"עמית כוכבי הוא יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לחיזוק שדרות וקהילות הדרום."},"sameAs":["https://www.linkedin.com/in/amitkochavi","https://x.com/amitkochavi"],"knowsAbout":["Entrepreneurship","Investment","Philanthropy","Public Service","Community Development","Sderot"]}$json$
+  $json${"name":"Amit Kochavi","alternateName":["Amit L. Kochavi","Amit Lev Kochavi","עמית כוכבי","עמית לב כוכבי"],"jobTitle":{"en":"Entrepreneur & Public Servant","he":"יזם ואיש ציבור"},"description":{"en":"Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.","he":"עמית כוכבי הוא יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לחיזוק שדרות וקהילות הדרום."},"sameAs":["https://www.linkedin.com/in/amitkochavi/"],"knowsAbout":["Entrepreneurship","Investment","Philanthropy","Public Service","Community Development","Sderot"]}$json$
 )
 on conflict (id) do update set
   site_name = excluded.site_name,
