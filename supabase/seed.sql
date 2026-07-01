@@ -68,7 +68,12 @@ insert into public.pages (key, title, hero, blocks, sort_order) values
   $json$[{"id":"contact-intro","type":"text","body":{"en":"Please use the form below or reach out by email. Messages are reviewed by Amit Kochavi’s office.","he":"ניתן להשתמש בטופס שלהלן או לפנות בדוא\"ל. ההודעות מטופלות על ידי משרדו של עמית כוכבי."}}]$json$,
   5
 )
-on conflict (key) do nothing;
+on conflict (key) do update set
+  title = excluded.title,
+  hero = excluded.hero,
+  blocks = excluded.blocks,
+  sort_order = excluded.sort_order,
+  updated_at = now();
 
 -- ── Books (reading list, shown on /books) ────────────────────────────────────
 -- excerpt holds the author. he left empty → falls back to en at render time.
@@ -86,7 +91,15 @@ insert into public.media_items (slug, kind, title, excerpt, body, sort_order) va
 ('the-ride-of-a-lifetime','reading',$json${"en":"The Ride of a Lifetime","he":""}$json$,$json${"en":"Bob Iger","he":""}$json$,$json${"en":"","he":""}$json$,10),
 ('thinking-fast-and-slow','reading',$json${"en":"Thinking, Fast and Slow","he":""}$json$,$json${"en":"Daniel Kahneman","he":""}$json$,$json${"en":"","he":""}$json$,11),
 ('bloomberg-by-bloomberg','reading',$json${"en":"Bloomberg by Bloomberg","he":""}$json$,$json${"en":"Mike Bloomberg","he":""}$json$,$json${"en":"","he":""}$json$,12)
-on conflict (slug) do nothing;
+on conflict (slug) do update set
+  kind = excluded.kind,
+  title = excluded.title,
+  excerpt = excluded.excerpt,
+  body = excluded.body,
+  external_url = excluded.external_url,
+  published_at = excluded.published_at,
+  sort_order = excluded.sort_order,
+  updated_at = now();
 
 -- ── Press & coverage (shown on /media, link out to source) ────────────────────
 -- excerpt holds the outlet name. external_url is the source link.
@@ -108,4 +121,12 @@ insert into public.media_items (slug, kind, title, excerpt, body, external_url, 
 ('atlwire-digitizing-industries','article',$json${"en":"Meet Amit Kochavi: Digitizing Traditional Industries","he":""}$json$,$json${"en":"ATL Wire","he":""}$json$,$json${"en":"","he":""}$json$,'https://atlwire.com/meet-amit-kochavi-digitizing-traditional-industries/',null,13),
 ('cleveland-jewish-news-mou','press',$json${"en":"Hebrew U & Sapir sign MOU with Clemson","he":""}$json$,$json${"en":"Cleveland Jewish News","he":""}$json$,$json${"en":"","he":""}$json$,'https://www.clevelandjewishnews.com/jns/hebrew-u-sapir-college-sign-mou-with-clemson-to-tackle-agricultural-issues/article_8b3d14bb-bb15-51f2-8784-e6ef4211d1ff.html',null,14),
 ('syp-studios-deskless-employees','article',$json${"en":"An Employee Engagement Platform for Deskless Employees","he":""}$json$,$json${"en":"SYP Studios","he":""}$json$,$json${"en":"","he":""}$json$,'https://sypstudios.com/amit-kochavi-providing-an-employee-engagement-platform-for-deskless-employees',null,15)
-on conflict (slug) do nothing;
+on conflict (slug) do update set
+  kind = excluded.kind,
+  title = excluded.title,
+  excerpt = excluded.excerpt,
+  body = excluded.body,
+  external_url = excluded.external_url,
+  published_at = excluded.published_at,
+  sort_order = excluded.sort_order,
+  updated_at = now();
