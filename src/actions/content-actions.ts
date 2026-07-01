@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient, hasSupabaseEnv } from "@/lib/supabase/server";
 import { CACHE_TAGS } from "@/lib/constants";
@@ -22,6 +22,16 @@ function now() {
   return new Date().toISOString();
 }
 
+/**
+ * Clear the affected data-cache tag AND regenerate every page across all CDN
+ * locations, so a dashboard edit appears identically on every device (desktop
+ * and mobile) right away instead of waiting for per-page cache windows.
+ */
+function revalidateEverywhere(tag: string) {
+  revalidateTag(tag);
+  revalidatePath("/", "layout");
+}
+
 export async function saveSettings(input: SiteSettings): Promise<ActionResult> {
   try {
     const supabase = await requireClient();
@@ -29,7 +39,7 @@ export async function saveSettings(input: SiteSettings): Promise<ActionResult> {
       .from("site_settings")
       .upsert({ id: 1, ...input, updated_at: now() });
     if (error) return { error: error.message };
-    revalidateTag(CACHE_TAGS.settings);
+    revalidateEverywhere(CACHE_TAGS.settings);
     return { ok: true };
   } catch (e) {
     return { error: (e as Error).message };
@@ -43,7 +53,7 @@ export async function savePage(input: Page): Promise<ActionResult> {
       .from("pages")
       .upsert({ ...input, updated_at: now() }, { onConflict: "key" });
     if (error) return { error: error.message };
-    revalidateTag(CACHE_TAGS.pages);
+    revalidateEverywhere(CACHE_TAGS.pages);
     return { ok: true };
   } catch (e) {
     return { error: (e as Error).message };
@@ -80,7 +90,7 @@ export async function saveMedia(
           .single();
     const { data, error } = await query;
     if (error) return { error: error.message };
-    revalidateTag(CACHE_TAGS.media);
+    revalidateEverywhere(CACHE_TAGS.media);
     return { ok: true, id: data?.id };
   } catch (e) {
     return { error: (e as Error).message };
@@ -92,7 +102,7 @@ export async function deleteMedia(id: string): Promise<ActionResult> {
     const supabase = await requireClient();
     const { error } = await supabase.from("media_items").delete().eq("id", id);
     if (error) return { error: error.message };
-    revalidateTag(CACHE_TAGS.media);
+    revalidateEverywhere(CACHE_TAGS.media);
     return { ok: true };
   } catch (e) {
     return { error: (e as Error).message };
