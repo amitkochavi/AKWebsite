@@ -15,7 +15,11 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return [];
+    // Old paths from the previous site (still in Google's index) that map to a
+    // specific new page. Case normalization is handled in middleware.
+    return [
+      { source: "/resume", destination: "/en/about", permanent: true },
+    ];
   },
   async headers() {
     // Belt-and-suspenders: tell every crawler not to index the dashboard or
