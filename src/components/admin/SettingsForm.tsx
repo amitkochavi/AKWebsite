@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { SiteSettings, SocialLink } from "@/types/content";
 import { saveSettings } from "@/actions/content-actions";
 import { BilingualField } from "./BilingualField";
+import { ImageUploader } from "./ImageUploader";
 import { SaveBar, type SaveState } from "./SaveBar";
 
 const linesToArr = (s: string) =>
@@ -146,6 +147,11 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
           label="Full name"
           value={p.name}
           onChange={(name) => setS({ ...s, person_schema: { ...p, name } })}
+        />
+        <ImageUploader
+          label="Profile photo (shown on the About page and used by Google & social sharing)"
+          value={p.image}
+          onChange={(image) => setS({ ...s, person_schema: { ...p, image } })}
         />
         <Area
           label="Also known as"
