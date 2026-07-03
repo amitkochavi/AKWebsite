@@ -91,10 +91,23 @@ export function personSchema(
     mainEntityOfPage: SITE_URL,
     jobTitle: pick(p.jobTitle, locale),
     description: pick(p.description, locale),
-    image: p.image,
+    image: p.image
+      ? p.image.startsWith("http")
+        ? p.image
+        : `${SITE_URL}${p.image}`
+      : undefined,
     sameAs: p.sameAs,
     knowsAbout: p.knowsAbout,
     knowsLanguage: ["en", "he"],
+    ...(p.worksFor
+      ? {
+          worksFor: {
+            "@type": "Organization",
+            name: p.worksFor,
+            url: "https://starwellholdings.com/",
+          },
+        }
+      : {}),
     // Authoritative third-party coverage helps Google associate these pages
     // with the person entity.
     ...(press.length
