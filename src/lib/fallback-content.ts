@@ -26,6 +26,7 @@ export const FALLBACK_SETTINGS: SiteSettings = {
   contact_email: "office@amitkochavi.com",
   social_links: [
     { platform: "LinkedIn", url: "https://www.linkedin.com/in/amitkochavi/" },
+    { platform: "Starwell Holdings", url: "https://starwellholdings.com/en/" },
   ],
   seo_defaults: {
     title: {
@@ -33,8 +34,8 @@ export const FALLBACK_SETTINGS: SiteSettings = {
       he: "עמית כוכבי — עסקים, פילנתרופיה ושירות ציבורי",
     },
     description: {
-      en: "The official website of Amit L. Kochavi — entrepreneur and business leader, fourth-generation philanthropist, and public servant committed to the people of Sderot and the Negev.",
-      he: "האתר הרשמי של עמית כוכבי — יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לתושבי שדרות והנגב.",
+      en: "Amit Kochavi — founder of Starwell Holdings and senior advisor to the Mayor of Sderot. Building companies and city-scale projects between Tel Aviv and Los Angeles.",
+      he: "עמית כוכבי — מייסד סטארוול הולדינגס ויועץ בכיר לראש עיריית שדרות. בונה חברות ופרויקטים עירוניים בין תל אביב ללוס אנג'לס.",
     },
   },
   person_schema: {
@@ -45,18 +46,22 @@ export const FALLBACK_SETTINGS: SiteSettings = {
       "עמית כוכבי",
       "עמית לב כוכבי",
     ],
-    jobTitle: { en: "Entrepreneur & Public Servant", he: "יזם ואיש ציבור" },
+    jobTitle: {
+      en: "Founder of Starwell Holdings; Senior Advisor to the Mayor of Sderot",
+      he: "מייסד סטארוול הולדינגס; יועץ בכיר לראש עיריית שדרות",
+    },
     description: {
-      en: "Amit Kochavi is an entrepreneur and business leader, a fourth-generation philanthropist, and a public servant dedicated to strengthening Sderot and the communities of southern Israel.",
-      he: "עמית כוכבי הוא יזם ומנהיג עסקי, פילנתרופ מהדור הרביעי ואיש ציבור המחויב לחיזוק שדרות וקהילות הדרום.",
+      en: "Amit Kochavi is an entrepreneur and investor, the founder of Starwell Holdings, and senior advisor to the Mayor of Sderot — working between Tel Aviv and Los Angeles.",
+      he: "עמית כוכבי הוא יזם ומשקיע, מייסד סטארוול הולדינגס ויועץ בכיר לראש עיריית שדרות — פועל בין תל אביב ללוס אנג'לס.",
     },
     sameAs: ["https://www.linkedin.com/in/amitkochavi/"],
+    worksFor: "Starwell Holdings",
     knowsAbout: [
       "Entrepreneurship",
       "Investment",
-      "Philanthropy",
+      "Information Technology",
+      "Real Estate",
       "Public Service",
-      "Community Development",
       "Sderot",
     ],
   },
@@ -69,22 +74,13 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     hero: {
       title: { en: "Amit Kochavi", he: "עמית כוכבי" },
       subtitle: {
-        en: "Building enterprises, continuing a family legacy of giving, and serving the people of Sderot.",
-        he: "בונה מפעלים, ממשיך מורשת משפחתית של נתינה, ומשרת את תושבי שדרות.",
+        en: "Founder of Starwell Holdings. Senior advisor to the Mayor of Sderot. Building between Tel Aviv and Los Angeles.",
+        he: "מייסד סטארוול הולדינגס. יועץ בכיר לראש עיריית שדרות. בונה בין תל אביב ללוס אנג'לס.",
       },
       cta_label: { en: "Learn more", he: "מידע נוסף" },
       cta_href: "/about",
     },
     blocks: [
-      {
-        id: "home-intro",
-        type: "text",
-        heading: { en: "A life across three commitments", he: "חיים של שלוש מחויבויות" },
-        body: {
-          en: "Amit Kochavi’s work spans the worlds of business, philanthropy, and public service. Each reinforces the others — enterprise that creates opportunity, giving that strengthens community, and service that puts people first.",
-          he: "פועלו של עמית כוכבי משתרע על פני עולמות העסקים, הפילנתרופיה והשירות הציבורי. כל אחד מהם מחזק את האחרים — יזמות שיוצרת הזדמנות, נתינה שמחזקת קהילה, ושירות ששם את האדם במרכז.",
-        },
-      },
       {
         id: "home-pillars",
         type: "cards",
@@ -93,24 +89,24 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
           {
             title: { en: "Business", he: "עסקים" },
             body: {
-              en: "A career building and backing companies that create lasting value and jobs.",
-              he: "קריירה של בנייה וגיבוי חברות שיוצרות ערך ותעסוקה לאורך זמן.",
+              en: "Starwell Holdings: a technology arm buying and building Israeli IT companies, a real estate arm continuing four generations of family business, and an investments arm.",
+              he: "סטארוול הולדינגס: זרוע טכנולוגיה שרוכשת ובונה חברות IT ישראליות, זרוע נדל\"ן שממשיכה ארבעה דורות של עסק משפחתי, וזרוע השקעות.",
             },
             href: "/business",
           },
           {
             title: { en: "Philanthropy", he: "פילנתרופיה" },
             body: {
-              en: "A fourth-generation tradition of giving, invested in people and community.",
-              he: "מסורת נתינה מהדור הרביעי, המושקעת באנשים ובקהילה.",
+              en: "Four generations of family giving in Israel and Los Angeles. Two foundation board seats.",
+              he: "ארבעה דורות של נתינה משפחתית בישראל ובלוס אנג'לס. שני מושבי דירקטוריון.",
             },
             href: "/philanthropy",
           },
           {
             title: { en: "Public Service", he: "שירות ציבורי" },
             body: {
-              en: "Standing with Sderot and the Negev — resilience, recovery, and growth.",
-              he: "עומד לצד שדרות והנגב — חוסן, שיקום וצמיחה.",
+              en: "Working with the Mayor of Sderot and the Tkuma Directorate on the city's recovery since October 7th.",
+              he: "עבודה עם ראש עיריית שדרות ומינהלת תקומה על שיקום העיר, מאז 7 באוקטובר.",
             },
             href: "/public-service",
           },
@@ -133,39 +129,40 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     hero: {
       title: { en: "About Amit Kochavi", he: "אודות עמית כוכבי" },
       subtitle: {
-        en: "Entrepreneur, investor, and public servant — building between Tel Aviv and Los Angeles.",
-        he: "יזם, משקיע ואיש ציבור — בונה בין תל אביב ללוס אנג'לס.",
+        en: "Founder of Starwell Holdings. Senior advisor to the Mayor of Sderot. Tel Aviv and Los Angeles.",
+        he: "מייסד סטארוול הולדינגס. יועץ בכיר לראש עיריית שדרות. תל אביב ולוס אנג'לס.",
       },
     },
     blocks: [
       {
-        id: "about-bio",
+        id: "about-short-bio",
         type: "text",
+        heading: { en: "Short bio", he: "ביו קצר" },
         body: {
-          en: `<p>I was born in Tel Aviv on December 10th, 1997, into a family that taught me two things early: that wealth is a responsibility before it is a privilege, and that nothing you inherit matters as much as what you build.</p>
-<p>I'm a fourth-generation entrepreneur. On one side of my family stands Max Factor Sr., who left Łódź for Los Angeles and built one of the most recognized names in the history of beauty — proof that an immigrant with a craft and conviction can shape global culture. On the other side, generations of builders and investors in Israel and the United States who developed real estate, backed businesses, and gave back to the communities that made their success possible. Growing up between Tel Aviv and Los Angeles, I absorbed both worlds: Israeli directness and ambition, and American scale and institution-building.</p>
-<p>In March 2019, at 21, I founded my first company, Circles Ltd. We started with an innovation-management platform, sold it to our first customers, and failed. So we did what founders do — we listened, pivoted, and rebuilt the company as Cormi, a workflow and forms platform serving businesses in construction and manufacturing, backed by leading Israeli investors including the owner of Tidhar, one of Israel's largest construction groups. The lesson of those years stays with me: resilience is not a slogan. It is the daily practice of showing up after the plan breaks.</p>
-<p>Today I lead Starwell Holdings, the platform through which I build, invest, and advise — from technology services consolidation to large-scale urban development in Tel Aviv-Jaffa.</p>
-<p>But the chapter that changed my life began on October 7th, 2023. In the aftermath of that day, I joined the Mayor of Sderot as a senior advisor, working alongside the Tkuma Directorate in the Prime Minister's Office to help structure the city's economic recovery and long-term development plan. Sderot taught me what business never could: that the hardest, most meaningful work is rebuilding a community's belief in its own future.</p>
-<p>That work sits at the center of everything I do now — alongside board service at the Buchman Heyman Foundation and the Sharon &amp; Herb Glaser Foundation, membership in TAU Aurion, Tel Aviv University's next-generation leadership community, and participation in Voice of the People, the President of Israel's global council on the future of the Jewish people.</p>
-<p>I split my time between Tel Aviv and Los Angeles. I believe in free markets, strong security, a pluralistic Israel, and an unbreakable bond between Israel and the Jewish Diaspora. And I believe the next generation of Israeli leadership has to be built the old way: by doing the work first.</p>`,
-          he: `<p>נולדתי בתל אביב ב-10 בדצמבר 1997, למשפחה שלימדה אותי שני דברים כבר בגיל צעיר: שעושר הוא אחריות לפני שהוא זכות, ושדבר מכל מה שאתה יורש אינו חשוב כמו מה שאתה בונה בעצמך.</p>
-<p>אני יזם מהדור הרביעי. בצד אחד של משפחתי עומד מקס פקטור האב, שעזב את לודז' לטובת לוס אנג'לס ובנה אחד מהשמות המוכרים ביותר בתולדות עולם היופי — הוכחה לכך שמהגר בעל מלאכה והכרה יכול לעצב תרבות גלובלית. בצד השני, דורות של בונים ומשקיעים בישראל ובארצות הברית, שפיתחו נדל"ן, גיבו עסקים, והחזירו לקהילות שאפשרו את הצלחתם. כשגדלתי בין תל אביב ללוס אנג'לס, ספגתי את שני העולמות: הישירות והשאפתנות הישראלית, והעוצמה ובניית המוסדות האמריקאית.</p>
-<p>במרץ 2019, בגיל 21, הקמתי את החברה הראשונה שלי, Circles Ltd. התחלנו עם פלטפורמה לניהול חדשנות, מכרנו ללקוחותינו הראשונים — ונכשלנו. אז עשינו את מה שיזמים עושים: הקשבנו, ביצענו פיבוט, ובנינו מחדש את החברה כ-Cormi, פלטפורמת תהליכים וטפסים המשרתת עסקים בתחומי הבנייה והייצור, בגיבוי משקיעים ישראליים מובילים ובהם הבעלים של תדהר, אחת מקבוצות הבנייה הגדולות בישראל. הלקח של אותן שנים נותר עמי: חוסן אינו סיסמה. הוא התרגול היומיומי של לקום שוב לאחר שהתוכנית מתנפצת.</p>
-<p>כיום אני עומד בראש Starwell Holdings, הפלטפורמה שדרכה אני בונה, משקיע ומייעץ — מאיחוד שירותי טכנולוגיה ועד התחדשות עירונית בקנה מידה גדול בתל אביב-יפו.</p>
-<p>אך הפרק ששינה את חיי החל ב-7 באוקטובר 2023. בעקבות אותו יום הצטרפתי לראש עיריית שדרות כיועץ בכיר, ופעלתי לצד מינהלת תקומה במשרד ראש הממשלה כדי לעצב את תוכנית ההתאוששות הכלכלית והפיתוח ארוך-הטווח של העיר. שדרות לימדה אותי את מה שהעסקים מעולם לא יכלו: שהעבודה הקשה והמשמעותית ביותר היא לשקם את אמונתה של קהילה בעתידה.</p>
-<p>עבודה זו ניצבת במרכז כל מה שאני עושה כיום — לצד חברות בדירקטוריונים של קרן בוכמן-היימן וקרן שרון והרב גלייזר, חברות ב-TAU Aurion, קהילת המנהיגות הצעירה של אוניברסיטת תל אביב, והשתתפות ב-Voice of the People, מועצת נשיא המדינה העולמית לעתיד העם היהודי.</p>
-<p>אני מחלק את זמני בין תל אביב ללוס אנג'לס. אני מאמין בשווקים חופשיים, בביטחון חזק, בישראל פלורליסטית, ובברית בל-תינתק בין ישראל ליהדות התפוצות. ואני מאמין שעל הדור הבא של המנהיגות הישראלית להיבנות בדרך הישנה: קודם כול עושים את העבודה.</p>`,
+          en: `<p>Amit Kochavi is an entrepreneur and investor, and the founder of <a href="https://starwellholdings.com/en/" target="_blank" rel="noopener">Starwell Holdings</a> — a Tel Aviv holding company with three arms: technology, real estate, and investments. Through it he acquires and builds Israeli IT services companies, continues his family's fourth-generation real estate business — residential, logistics, commercial, and office properties in Israel and the United States — and advises on large urban projects, including Rova 7, an 890-home development in Jaffa. Since October 2023 he has served as senior advisor to the Mayor of Sderot, working with the Tkuma Directorate in the Prime Minister's Office on the city's recovery — including a new ₪500M technology faculty at Sapir Academic College and a ₪100M program relocating tech families to the region. He founded his first company, Cormi, at 21, and serves on the boards of the Buchman Heyman Foundation and the Herb &amp; Sharon Glaser Foundation. A descendant of Max Factor Sr., he is a member of Voice of the People, the President of Israel's council on the future of the Jewish people, and lives between Tel Aviv and Los Angeles.</p>`,
+          he: `<p>עמית כוכבי הוא יזם ומשקיע, מייסד <a href="https://starwellholdings.com/he/" target="_blank" rel="noopener">סטארוול הולדינגס</a> (Starwell Holdings) — חברת אחזקות תל־אביבית עם שלוש זרועות: טכנולוגיה, נדל"ן והשקעות. דרכה הוא רוכש ובונה חברות שירותי IT בישראל, ממשיך את עסקי הנדל"ן המשפחתיים זה ארבעה דורות — מגורים, לוגיסטיקה, מסחר ומשרדים בישראל ובארה"ב — ומלווה פרויקטים עירוניים גדולים, בהם רובע 7 ביפו, פרויקט של כ-890 יחידות דיור. מאז אוקטובר 2023 הוא משמש יועץ בכיר לראש עיריית שדרות ופועל עם מינהלת תקומה במשרד ראש הממשלה על שיקום העיר וצמיחתה — בין היתר פקולטה חדשה לטכנולוגיה במכללה האקדמית ספיר בתקציב של כ-500 מיליון ש"ח, ותוכנית של 100 מיליון ש"ח להעברת משפחות הייטק לאזור. את החברה הראשונה שלו, Cormi, הקים בגיל 21, והוא חבר דירקטוריון בקרן בוכמן־היימן ובקרן הרברט ושרון גלייזר. צאצא של מקס פקטור האב, חבר ב"קול העם" — מועצת נשיא המדינה לעתיד העם היהודי — וחי בין תל אביב ללוס אנג'לס.</p>`,
         },
       },
       {
-        id: "about-values",
-        type: "quote",
+        id: "about-story",
+        type: "text",
+        heading: { en: "My story", he: "הסיפור שלי" },
         body: {
-          en: "Wealth is a responsibility before it is a privilege — and nothing you inherit matters as much as what you build.",
-          he: "עושר הוא אחריות לפני שהוא זכות — ודבר ממה שאתה יורש אינו חשוב כמו מה שאתה בונה בעצמך.",
+          en: `<p>I was born in Tel Aviv on December 10, 1997, and grew up between Tel Aviv and Los Angeles.</p>
+<p>I'm a fourth-generation entrepreneur. Real estate is the family business: four generations of developing and owning residential, logistics, commercial, and office properties in Israel and the United States. One side of my family also goes back to Max Factor Sr., who left Łódź with a trade, opened a shop in Los Angeles, and turned his own name into one of the best-known brands in the world. The rule I grew up on: what you inherit matters less than what you build yourself.</p>
+<p>In March 2019, at 21, I founded my first company, Circles. We launched an innovation-management platform, sold it to our first customers, and failed. We rebuilt the company as Cormi — a forms and workflow platform for construction and manufacturing businesses — backed by Israeli investors, including the owner of Tidhar, one of Israel's largest construction groups. Cormi is still running today.</p>
+<p>Now I run <a href="https://starwellholdings.com/en/" target="_blank" rel="noopener">Starwell Holdings</a>, built around three arms. The technology arm acquires established Israeli IT services companies — profitable businesses with 20 to 50 employees — and upgrades them with AI. The real estate arm continues the family business and advises on large urban projects; right now, Rova 7 in Jaffa: about 890 homes and commercial space, developed by Kardan Real Estate and Realty Fund. The investments arm manages the group's capital in Israel and the U.S. The full picture is on the <a href="/en/business">Business page</a>.</p>
+<p>October 7, 2023 changed my direction. Since then I've served as senior advisor to the Mayor of Sderot, working with the Tkuma Directorate in the Prime Minister's Office on the city's recovery and growth: a new ₪500M technology faculty at Sapir Academic College, a ₪100M program bringing tech families to the region, a Rimon music school, and seven bilingual kindergartens. The details are on the <a href="/en/public-service">Public Service page</a>. It's the most meaningful work I've done.</p>
+<p>Alongside that, I serve on the boards of two of my family's foundations — the Buchman Heyman Foundation, founded in 1942, and the Herb &amp; Sharon Glaser Foundation — and I'm a member of TAU Aurion, Tel Aviv University's next-generation leadership community, and of Voice of the People, the President of Israel's council on the future of the Jewish people.</p>
+<p>I believe in free markets, strong security, a pluralistic Israel, and a close bond between Israel and Jewish communities around the world. And I believe the way to lead in Israel is to do the work first.</p>`,
+          he: `<p>נולדתי בתל אביב ב-10 בדצמבר 1997, וגדלתי בין תל אביב ללוס אנג'לס.</p>
+<p>אני דור רביעי של יזמים. נדל"ן הוא העסק המשפחתי: ארבעה דורות של יזמות ובעלות בתחומי המגורים, הלוגיסטיקה, המסחר והמשרדים — בישראל ובארצות הברית. צד אחד של המשפחה גם מגיע עד מקס פקטור האב, שעזב את לודז' עם מקצוע ביד, פתח חנות בלוס אנג'לס, והפך את השם הפרטי שלו לאחד המותגים המוכרים בעולם. הכלל שגדלתי עליו: מה שאתה יורש חשוב פחות ממה שאתה בונה בעצמך.</p>
+<p>במרץ 2019, בגיל 21, הקמתי את החברה הראשונה שלי, Circles. השקנו פלטפורמה לניהול חדשנות, מכרנו ללקוחות הראשונים — ונכשלנו. בנינו את החברה מחדש כ-Cormi, פלטפורמת טפסים ותהליכי עבודה לחברות בנייה וייצור, בגיבוי משקיעים ישראלים ובהם הבעלים של תדהר, מקבוצות הבנייה הגדולות בישראל. Cormi פועלת עד היום.</p>
+<p>היום אני מנהל את <a href="https://starwellholdings.com/he/" target="_blank" rel="noopener">סטארוול הולדינגס</a>, שבנויה משלוש זרועות. זרוע הטכנולוגיה רוכשת חברות שירותי IT ותיקות בישראל — עסקים רווחיים עם 20 עד 50 עובדים — ומשדרגת אותן עם AI. זרוע הנדל"ן ממשיכה את העסק המשפחתי ומלווה פרויקטים עירוניים גדולים; כרגע — רובע 7 ביפו: כ-890 יחידות דיור ושטחי מסחר, של קרדן נדל"ן וריאליטי קרן השקעות. זרוע ההשקעות מנהלת את ההון של הקבוצה בישראל ובארה"ב. התמונה המלאה בעמוד <a href="/he/business">עסקים</a>.</p>
+<p>7 באוקטובר 2023 שינה את הכיוון שלי. מאז אני יועץ בכיר לראש עיריית שדרות, ועובד עם מינהלת תקומה במשרד ראש הממשלה על השיקום והצמיחה של העיר: פקולטה חדשה לטכנולוגיה במכללה האקדמית ספיר בתקציב של כ-500 מיליון ש"ח, תוכנית של 100 מיליון ש"ח להבאת משפחות הייטק לאזור, בית ספר למוזיקה של רימון, ושבעה גני ילדים דו־לשוניים. הפרטים בעמוד <a href="/he/public-service">שירות ציבורי</a>. זו העבודה המשמעותית ביותר שעשיתי.</p>
+<p>לצד זה אני חבר דירקטוריון בשתיים מקרנות המשפחה — קרן בוכמן־היימן, שנוסדה ב-1942, וקרן הרברט ושרון גלייזר — וחבר ב-TAU Aurion, קהילת המנהיגות הצעירה של אוניברסיטת תל אביב, וב"קול העם", מועצת נשיא המדינה לעתיד העם היהודי.</p>
+<p>אני מאמין בשוק חופשי, בביטחון חזק, בישראל פלורליסטית ובקשר הדוק בין ישראל לקהילות היהודיות בעולם. ואני מאמין שהדרך להנהיג בישראל היא קודם כול לעשות את העבודה.</p>`,
         },
-        attribution: { en: "Amit Kochavi", he: "עמית כוכבי" },
       },
     ],
     seo: {},
@@ -177,39 +174,101 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     key: "business",
     title: { en: "Business", he: "עסקים" },
     hero: {
-      title: { en: "Business Career", he: "קריירה עסקית" },
+      title: { en: "Business", he: "עסקים" },
       subtitle: {
-        en: "Building and backing companies that create lasting value.",
-        he: "בנייה וגיבוי חברות שיוצרות ערך לאורך זמן.",
+        en: "One holding company. Three arms: technology, real estate, investments.",
+        he: "חברת אחזקות אחת. שלוש זרועות: טכנולוגיה, נדל\"ן, השקעות.",
       },
     },
     blocks: [
       {
-        id: "biz-overview",
+        id: "biz-opening",
         type: "text",
-        heading: { en: "An entrepreneur’s path", he: "דרכו של יזם" },
         body: {
-          en: "Across more than two decades, Amit Kochavi has founded, led, and invested in businesses spanning technology, real estate, and growth-stage enterprise. His approach pairs long-term vision with operational discipline — building companies designed to endure and to create meaningful employment.",
-          he: "במשך למעלה משני עשורים ייסד עמית כוכבי, הוביל והשקיע בעסקים בתחומי הטכנולוגיה, הנדל\"ן וחברות בצמיחה. גישתו משלבת חזון ארוך-טווח עם משמעת תפעולית — בניית חברות שנועדו להתמיד וליצור תעסוקה משמעותית.",
+          en: `<p><a href="https://starwellholdings.com/en/" target="_blank" rel="noopener">Starwell Holdings</a> is my holding company, based in Tel Aviv. Three arms — technology, real estate, and investments — alongside Cormi, the company I founded at 21.</p>`,
+          he: `<p><a href="https://starwellholdings.com/he/" target="_blank" rel="noopener">סטארוול הולדינגס</a> היא חברת האחזקות שלי, יושבת בתל אביב. שלוש זרועות — טכנולוגיה, נדל"ן והשקעות — לצד Cormi, החברה שהקמתי בגיל 21.</p>`,
         },
       },
       {
-        id: "biz-stats",
+        id: "biz-technology",
+        type: "text",
+        heading: {
+          en: "The technology arm — buying and building Israeli IT companies",
+          he: "זרוע הטכנולוגיה — רכישה ובנייה של חברות IT ישראליות",
+        },
+        body: {
+          en: `<p>Through Starwell's technology arm, we acquire established IT services and managed services (MSP) companies in Israel.</p>
+<p>What we look for:</p>
+<ul><li>Revenue of ₪10–30 million and 20–50 employees</li><li>Long-standing business clients on recurring service contracts</li><li>Owners planning retirement or their next chapter</li></ul>
+<p>The thesis: these are good businesses run the old way. AI is changing how much a service team can deliver per person, and what clients will ask of their IT provider. We buy the company, keep the team and the clients, and upgrade the operation — automation inside, and new lines for the existing client base: ERP and CRM implementation, AI agents, and cybersecurity.</p>
+<p>We buy to own and operate for the long term — not to flip.</p>
+<p>If you own an Israeli IT services company and the next chapter is on your mind, I want to hear from you. <a href="/en/contact">Contact me →</a></p>`,
+          he: `<p>דרך זרוע הטכנולוגיה של סטארוול אנחנו רוכשים חברות ותיקות לשירותי IT ושירותים מנוהלים (MSP) בישראל.</p>
+<p>מה אנחנו מחפשים:</p>
+<ul><li>הכנסות של 10–30 מיליון ש"ח ו-20–50 עובדים</li><li>לקוחות עסקיים ותיקים בחוזי שירות מתמשכים</li><li>בעלים שמתכננים פרישה או פרק הבא</li></ul>
+<p>התזה: אלה עסקים טובים שמנוהלים בשיטה הישנה. ה-AI משנה כמה צוות שירות יכול לספק לכל עובד, ומה לקוחות יבקשו מספק ה-IT שלהם. אנחנו קונים את החברה, שומרים על הצוות ועל הלקוחות, ומשדרגים את התפעול — אוטומציה בפנים, וקווי מוצר חדשים ללקוחות הקיימים: הטמעות ERP ו-CRM, סוכני AI, וסייבר.</p>
+<p>אנחנו קונים כדי להחזיק ולתפעל לטווח ארוך — לא כדי למכור הלאה.</p>
+<p>יש לך חברת שירותי IT בישראל, והפרק הבא על השולחן? דברו איתי. <a href="/he/contact">צור קשר ←</a></p>`,
+        },
+      },
+      {
+        id: "biz-realestate",
+        type: "text",
+        heading: {
+          en: "The real estate arm — the family business, fourth generation",
+          he: "זרוע הנדל\"ן — העסק המשפחתי, דור רביעי",
+        },
+        body: {
+          en: `<p>Real estate is my family's business. Four generations of developing and owning residential, logistics, commercial, and office properties — in Israel and the United States. Today the arm works on the family's projects and advises developers on large, complex urban projects.</p>
+<p>Current engagement: Rova 7 — the HaPalach compound in Givat Herzl, Jaffa. Around 890 homes plus commercial space, developed by Kardan Real Estate and Realty Fund, with construction starting in 2027. My scope: work with the municipality, project branding, the commercial mix, and how technology is built into the project.</p>`,
+          he: `<p>נדל"ן הוא העסק של המשפחה שלי. ארבעה דורות של יזמות ובעלות בנכסי מגורים, לוגיסטיקה, מסחר ומשרדים — בישראל ובארצות הברית. היום הזרוע עובדת על הפרויקטים של המשפחה ומלווה יזמים בפרויקטים עירוניים גדולים ומורכבים.</p>
+<p>הפרויקט הנוכחי: רובע 7 — מתחם הפלח בגבעת הרצל, יפו. כ-890 יחידות דיור ושטחי מסחר, של קרדן נדל"ן וריאליטי קרן השקעות, עם תחילת בנייה ב-2027. תחומי האחריות שלי: העבודה מול העירייה, מיתוג הפרויקט, התמהיל המסחרי, ושילוב הטכנולוגיה בפרויקט.</p>`,
+        },
+      },
+      {
+        id: "biz-investments",
+        type: "text",
+        heading: { en: "The investments arm", he: "זרוע ההשקעות" },
+        body: {
+          en: `<p>The investments arm manages the group's capital: public markets and private positions, in Israel and the United States, held for the long term.</p>`,
+          he: `<p>זרוע ההשקעות מנהלת את ההון של הקבוצה: שוק ההון ופוזיציות פרטיות, בישראל ובארצות הברית, לטווח ארוך.</p>`,
+        },
+      },
+      {
+        id: "biz-cormi",
+        type: "text",
+        heading: {
+          en: "Cormi (Circles Ltd.) — my first company",
+          he: "Cormi (Circles Ltd.) — החברה הראשונה שלי",
+        },
+        body: {
+          en: `<p>Founded in March 2019, when I was 21. We started with an innovation-management platform, sold it, and failed — then rebuilt the company as Cormi, a forms and workflow platform for construction and manufacturing businesses. Investors include the owner of Tidhar, one of Israel's largest construction groups. Cormi is also the exclusive Israel partner of Doss, an American AI-native ERP.</p>`,
+          he: `<p>נוסדה במרץ 2019, כשהייתי בן 21. התחלנו עם פלטפורמה לניהול חדשנות, מכרנו — ונכשלנו. בנינו את החברה מחדש כ-Cormi, פלטפורמת טפסים ותהליכי עבודה לחברות בנייה וייצור. בין המשקיעים: הבעלים של תדהר, מקבוצות הבנייה הגדולות בישראל. Cormi היא גם השותפה הבלעדית בישראל של Doss, חברת ERP אמריקאית מבוססת AI.</p>`,
+        },
+      },
+      {
+        id: "biz-facts",
         type: "stat",
         items: [
-          { value: { en: "20+", he: "20+" }, label: { en: "Years in business", he: "שנות פעילות עסקית" } },
-          { value: { en: "Multiple", he: "מספר" }, label: { en: "Companies founded & backed", he: "חברות שהוקמו וגובו" } },
-          { value: { en: "Long-term", he: "ארוך-טווח" }, label: { en: "Investment horizon", he: "אופק השקעה" } },
+          {
+            value: { en: "4", he: "4" },
+            label: { en: "Generations in real estate", he: "דורות בנדל\"ן" },
+          },
+          {
+            value: { en: "₪10–30M", he: "10–30 מ׳" },
+            label: {
+              en: "Revenue range we acquire",
+              he: "טווח ההכנסות שאנחנו רוכשים",
+            },
+          },
+          {
+            value: { en: "890", he: "890" },
+            label: {
+              en: "Homes in the current advisory project",
+              he: "יחידות דיור בפרויקט הליווי הנוכחי",
+            },
+          },
         ],
-      },
-      {
-        id: "biz-approach",
-        type: "text",
-        heading: { en: "Philosophy", he: "פילוסופיה" },
-        body: {
-          en: "Credibility, patience, and partnership define how Amit works. He invests in people first, builds trust over years, and measures returns not only in capital but in the opportunity and stability his ventures create.",
-          he: "אמינות, סבלנות ושותפות מאפיינות את דרכו של עמית. הוא משקיע קודם כל באנשים, בונה אמון לאורך שנים, ומודד תשואה לא רק בהון אלא גם בהזדמנות וביציבות שמיזמיו יוצרים.",
-        },
       },
     ],
     seo: {},
@@ -223,18 +282,17 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     hero: {
       title: { en: "Philanthropy", he: "פילנתרופיה" },
       subtitle: {
-        en: "A fourth-generation tradition of giving.",
-        he: "מסורת נתינה מהדור הרביעי.",
+        en: "Four generations. Two board seats.",
+        he: "ארבעה דורות. שני מושבי דירקטוריון.",
       },
     },
     blocks: [
       {
-        id: "phil-legacy",
+        id: "phil-opening",
         type: "text",
-        heading: { en: "Four generations of giving", he: "ארבעה דורות של נתינה" },
         body: {
-          en: "Philanthropy is, for Amit Kochavi, an inheritance and a responsibility. As a fourth-generation philanthropist, he carries forward a family legacy in which giving is not an occasional act but a way of life — directed toward education, community resilience, and opportunity for the next generation.",
-          he: "עבור עמית כוכבי, הפילנתרופיה היא ירושה ואחריות כאחד. כפילנתרופ מהדור הרביעי, הוא ממשיך מורשת משפחתית שבה הנתינה אינה מעשה מזדמן אלא דרך חיים — המכוונת לחינוך, לחוסן קהילתי ולהזדמנות עבור הדור הבא.",
+          en: `<p>My family has been giving for four generations — in Israel and in Los Angeles. I grew up with it as a responsibility, not a title: board meetings, budgets, grant decisions, and follow-through. Today I serve on the boards of two of our family foundations.</p>`,
+          he: `<p>המשפחה שלי נותנת כבר ארבעה דורות — בישראל ובלוס אנג'לס. גדלתי על זה כאחריות, לא כתואר: ישיבות דירקטוריון, תקציבים, החלטות על מענקים, ומעקב עד הסוף. היום אני חבר דירקטוריון בשתיים מקרנות המשפחה.</p>`,
         },
       },
       {
@@ -248,16 +306,19 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
               he: "קרן בוכמן־היימן",
             },
             body: {
-              en: "Founded in 1942 by Sara Buchman.",
-              he: "נוסדה ב-1942 על ידי שרה בוכמן.",
+              en: "Founded in 1942 by Sara Buchman. I serve on the board.",
+              he: "נוסדה ב-1942 על ידי שרה בוכמן. אני חבר דירקטוריון.",
             },
           },
           {
             title: {
               en: "The Herb & Sharon Glaser Foundation",
-              he: "קרן הרב ושרון גלייזר",
+              he: "קרן הרברט ושרון גלייזר",
             },
-            body: { en: "", he: "" },
+            body: {
+              en: "Established in Los Angeles by my grandparents, Herbert and Sharon Glaser. I serve on the board.",
+              he: "הוקמה בלוס אנג'לס על ידי סבי וסבתי, הרברט ושרון גלייזר. אני חבר דירקטוריון.",
+            },
           },
           {
             title: {
@@ -265,8 +326,15 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
               he: "קרן משפחת מקס פקטור",
             },
             body: {
-              en: "Continuing the legacy of Max Factor Sr.",
-              he: "ממשיכה את מורשתו של מקס פקטור האב.",
+              en: "Our family's foundation in Los Angeles, continuing giving that began with Max Factor Sr.",
+              he: "קרן המשפחה בלוס אנג'לס, שממשיכה נתינה שהתחילה אצל מקס פקטור האב.",
+            },
+          },
+          {
+            title: { en: "TAU Aurion", he: "TAU Aurion" },
+            body: {
+              en: "I'm a member of Aurion, Tel Aviv University's next-generation leadership community.",
+              he: "אני חבר ב-Aurion, קהילת המנהיגות הצעירה של אוניברסיטת תל אביב.",
             },
           },
         ],
@@ -281,68 +349,82 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     key: "public-service",
     title: { en: "Public Service", he: "שירות ציבורי" },
     hero: {
-      title: { en: "Public Service in Sderot", he: "שירות ציבורי בשדרות" },
+      title: { en: "Public Service", he: "שירות ציבורי" },
       subtitle: {
-        en: "Standing with the people of Sderot and the Negev.",
-        he: "עומד לצד תושבי שדרות והנגב.",
+        en: "Sderot. Since October 7th.",
+        he: "שדרות. מאז 7 באוקטובר.",
       },
     },
     blocks: [
       {
-        id: "ps-sderot",
+        id: "ps-opening",
         type: "text",
-        heading: { en: "A commitment to Sderot", he: "מחויבות לשדרות" },
         body: {
-          en: "Public service, for Amit Kochavi, begins close to home. He has dedicated himself to the people of Sderot — a community known for its extraordinary resilience — working to advance recovery, security, education, and long-term growth so that residents can build their futures with confidence.",
-          he: "השירות הציבורי, עבור עמית כוכבי, מתחיל קרוב לבית. הוא הקדיש את עצמו לתושבי שדרות — קהילה הידועה בחוסנה יוצא הדופן — ופועל לקידום שיקום, ביטחון, חינוך וצמיחה ארוכת-טווח, כדי שהתושבים יוכלו לבנות את עתידם מתוך ביטחון.",
+          en: `<p>After October 7, 2023, I joined the Mayor of Sderot as a senior advisor. I work with city hall and with the Tkuma Directorate in the Prime Minister's Office on the city's recovery and growth. The job in practice: turning ideas into funded, running projects — planning, budgets, government offices, donors, execution.</p>`,
+          he: `<p>אחרי 7 באוקטובר 2023 הצטרפתי לראש עיריית שדרות כיועץ בכיר. אני עובד עם העירייה ועם מינהלת תקומה במשרד ראש הממשלה על השיקום והצמיחה של העיר. העבודה בפועל: להפוך רעיונות לפרויקטים מתוקצבים ורצים — תכנון, תקציבים, משרדי ממשלה, תורמים, ביצוע.</p>`,
         },
       },
       {
-        id: "ps-initiatives",
+        id: "ps-projects",
         type: "cards",
         heading: {
-          en: "Initiatives since October 7th",
-          he: "יוזמות מאז ה-7 באוקטובר",
+          en: "Projects since October 7th",
+          he: "פרויקטים מאז 7 באוקטובר",
         },
         items: [
           {
-            title: { en: "Rimon Music School", he: "בית הספר למוזיקה רימון" },
-            body: {
-              en: "Founded a music school in Sderot. Budget ≈ ₪30M.",
-              he: "הקמת בית ספר למוזיקה בשדרות. תקציב של כ-30 מיליון ש\"ח.",
-            },
-          },
-          {
-            title: {
-              en: "Seven Bilingual Kindergartens",
-              he: "שבעה גני ילדים דו-לשוניים",
-            },
-            body: {
-              en: "English–Hebrew kindergartens, with a multi-million-shekel budget.",
-              he: "גנים דו-לשוניים באנגלית ובעברית, בתקציב של מיליוני שקלים.",
-            },
-          },
-          {
             title: {
               en: "Faculty of Technology, Sapir Academic College",
-              he: "הפקולטה לטכנולוגיה במכללת ספיר",
+              he: "פקולטה לטכנולוגיה, המכללה האקדמית ספיר",
             },
             body: {
-              en: "Founding-team member of a new technology faculty in Sderot — 15,000 m² (≈161,500 sq ft) beside the train station. Budget ≈ ₪500M.",
-              he: "חבר צוות מייסד של פקולטה חדשה לטכנולוגיה בשדרות — 15,000 מ\"ר (כ-161,500 רגל רבוע) סמוך לתחנת הרכבת. תקציב של כ-500 מיליון ש\"ח.",
+              en: "Part of the founding team of a new technology faculty in Sderot — a 15,000 m² (≈161,500 sq ft) campus next to the train station, with a budget of about ₪500 million.",
+              he: "חלק מהצוות המקים של פקולטה חדשה לטכנולוגיה בשדרות — קמפוס של 15,000 מ\"ר (כ-161,500 רגל רבוע) ליד תחנת הרכבת, בתקציב של כ-500 מיליון ש\"ח.",
             },
           },
           {
             title: {
-              en: "Tech Relocation to the Gaza Envelope",
-              he: "רילוקיישן של הייטק לעוטף עזה",
+              en: "Tech relocation to Sderot and the Gaza Envelope",
+              he: "רילוקיישן הייטק לשדרות ולעוטף",
             },
             body: {
-              en: "A program bringing tech employees from central Israel to Sderot and the Gaza-envelope region — a ₪100M effort to attract over 400 families.",
-              he: "תוכנית להבאת עובדי הייטק ממרכז הארץ לשדרות ולעוטף עזה — מאמץ בתקציב של 100 מיליון ש\"ח למשיכת למעלה מ-400 משפחות.",
+              en: "A ₪100 million program bringing tech workers and their families from central Israel to the region — more than 400 families.",
+              he: "תוכנית של 100 מיליון ש\"ח להבאת עובדי הייטק ומשפחותיהם ממרכז הארץ לאזור — יותר מ-400 משפחות.",
+            },
+          },
+          {
+            title: { en: "Rimon Music School", he: "בית ספר למוזיקה רימון" },
+            body: {
+              en: "A new Rimon music school in Sderot, with a budget of about ₪30 million.",
+              he: "בית ספר חדש למוזיקה של רימון בשדרות, בתקציב של כ-30 מיליון ש\"ח.",
+            },
+          },
+          {
+            title: {
+              en: "Seven bilingual kindergartens",
+              he: "שבעה גני ילדים דו־לשוניים",
+            },
+            body: {
+              en: "Seven Hebrew–English kindergartens across the city.",
+              he: "שבעה גנים בעברית ובאנגלית ברחבי העיר.",
+            },
+          },
+          {
+            title: { en: "Voice of the People", he: "קול העם" },
+            body: {
+              en: "Beyond Sderot: I'm a member of Voice of the People, the President of Israel's council on the future of the Jewish people, which brings together members from Israel and Jewish communities around the world.",
+              he: "מעבר לשדרות: אני חבר ב\"קול העם\", מועצת נשיא המדינה לעתיד העם היהודי, שמפגישה חברים מישראל ומקהילות יהודיות ברחבי העולם.",
             },
           },
         ],
+      },
+      {
+        id: "ps-closing",
+        type: "text",
+        body: {
+          en: `<p>This is the longest-term work I do, and the most important.</p>`,
+          he: `<p>זו העבודה הכי ארוכת־טווח שאני עושה — והכי חשובה.</p>`,
+        },
       },
     ],
     seo: {},
