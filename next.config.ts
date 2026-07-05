@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
     // specific new page. Case normalization is handled in middleware.
     return [
       { source: "/resume", destination: "/en/about", permanent: true },
+      // The home page lives at /en and /he — redirect phantom "/home" paths
+      // (from the old site, still in Google's index) so they don't 404.
+      { source: "/home", destination: "/en", permanent: true },
+      { source: "/en/home", destination: "/en", permanent: true },
+      { source: "/he/home", destination: "/he", permanent: true },
     ];
   },
   async headers() {
