@@ -140,7 +140,7 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
       <section className="space-y-4 rounded-xl border border-line bg-white p-6">
         <h2 className="text-lg font-bold">Search identity (JSON-LD)</h2>
         <p className="text-xs text-muted">
-          Powers how Google understands who this site is about — key for ranking
+          Powers how Google understands who this site is about, key for ranking
           on your name.
         </p>
         <Text
@@ -178,7 +178,7 @@ export function SettingsForm({ initial }: { initial: SiteSettings }) {
         />
         <Area
           label="Profile links (sameAs)"
-          hint="One URL per line — LinkedIn, X, Wikipedia, etc."
+          hint="One URL per line, e.g. X, Wikipedia."
           value={p.sameAs.join("\n")}
           onChange={(v) =>
             setS({ ...s, person_schema: { ...p, sameAs: linesToArr(v) } })

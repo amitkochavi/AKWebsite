@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { PageView } from "@/components/sections/PageView";
-import { LatestMedia } from "@/components/sections/LatestMedia";
 import { pageMetadata } from "@/lib/page-meta";
 import type { Locale } from "@/types/content";
 
@@ -15,11 +14,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const l = locale as Locale;
-  return (
-    <>
-      <PageView pageKey="home" path="/" locale={l} />
-      <LatestMedia locale={l} />
-    </>
-  );
+  return <PageView pageKey="home" path="/" locale={locale as Locale} />;
 }

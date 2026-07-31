@@ -5,11 +5,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Amit Kochavi",
     short_name: "Amit Kochavi",
     description:
-      "The official website of Amit L. Kochavi — business, philanthropy, and public service.",
-    start_url: "/en",
+      "The official website of Amit Kochavi, Senior Advisor to the Mayor of Sderot.",
+    start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#0f2742",
+    theme_color: "#1e3a8a",
     icons: [
       {
         src: "/icon.svg",
