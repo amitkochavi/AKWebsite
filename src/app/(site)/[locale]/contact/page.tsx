@@ -2,12 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getPage, getSettings } from "@/lib/content";
-import { pick } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/page-meta";
 import { Hero } from "@/components/sections/Hero";
-import { BlockRenderer } from "@/components/sections/BlockRenderer";
-import { ContactForm } from "@/components/sections/ContactForm";
-import { Container } from "@/components/ui/Container";
 import type { Locale } from "@/types/content";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -21,26 +17,36 @@ export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const l = locale as Locale;
-  const [page, settings] = await Promise.all([getPage("contact"), getSettings()]);
+  const [page, settings] = await Promise.all([
+    getPage("contact"),
+    getSettings(),
+  ]);
   if (!page) notFound();
+  const email = settings.contact_email || "contact@amitkochavi.com";
 
   return (
     <>
       <Hero hero={page.hero} locale={l} />
-      <BlockRenderer blocks={page.blocks} locale={l} />
-      <Container className="pb-20">
-        <ContactForm />
-        {settings.contact_email && (
-          <p className="mt-8 text-sm text-muted">
-            <a
-              href={`mailto:${settings.contact_email}`}
-              className="font-medium text-brand-dark hover:underline"
-            >
-              {settings.contact_email}
-            </a>
-          </p>
-        )}
-      </Container>
+      <div className="mt-10 space-y-3 text-lg">
+        <p>
+          <a
+            href={`mailto:${email}`}
+            className="text-accent hover:text-accent-dark"
+          >
+            {email}
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://x.com/AmitKochavi"
+            target="_blank"
+            rel="noopener"
+            className="text-accent hover:text-accent-dark"
+          >
+            @AmitKochavi
+          </a>
+        </p>
+      </div>
     </>
   );
 }

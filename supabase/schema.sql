@@ -1,5 +1,5 @@
 -- ============================================================================
--- Amit Kochavi website — database schema, RLS, and storage.
+-- Amit Kochavi website: database schema, RLS, and storage.
 -- Run this once in the Supabase SQL editor for your project.
 -- Bilingual content is stored as JSONB: { "en": "...", "he": "..." }.
 -- ============================================================================

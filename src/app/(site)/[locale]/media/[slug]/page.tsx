@@ -9,7 +9,6 @@ import {
   breadcrumbSchema,
   buildMetadata,
 } from "@/lib/seo";
-import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/types/content";
@@ -57,27 +56,22 @@ export default async function MediaItemPage({ params }: Props) {
 
   return (
     <article>
-      <section className="border-b border-line bg-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-xs font-semibold uppercase tracking-wider text-brand-dark">
-            {item.kind}
-          </p>
-          <h1 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-            {pick(item.title, l)}
-          </h1>
-          {item.published_at && (
-            <time className="mt-3 block text-sm text-muted" dateTime={item.published_at}>
-              {item.published_at}
-            </time>
-          )}
-        </Container>
+      <section>
+        <p className="section-heading">{item.kind}</p>
+        <h1 className="mt-2">{pick(item.title, l)}</h1>
+        <hr className="title-rule" aria-hidden />
+        {item.published_at && (
+          <time className="block text-sm text-muted" dateTime={item.published_at}>
+            {item.published_at}
+          </time>
+        )}
       </section>
 
-      <Container className="py-12">
-        <p className="mb-6 max-w-2xl text-lg leading-relaxed text-ink">
+      <div className="mt-10">
+        <p className="mb-6 text-lg leading-relaxed text-ink">
           {pick(item.excerpt, l)}
         </p>
-        <div className="prose-content max-w-2xl leading-relaxed text-ink">
+        <div className="prose-content leading-relaxed text-ink">
           {looksLikeHtml ? (
             <div dangerouslySetInnerHTML={{ __html: body }} />
           ) : (
@@ -86,25 +80,24 @@ export default async function MediaItemPage({ params }: Props) {
         </div>
 
         {item.external_url && (
-          <a
-            href={item.external_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-block rounded bg-brand px-5 py-2.5 text-sm font-semibold text-ink hover:bg-brand-dark hover:text-white"
-          >
-            {t("media.external")} →
-          </a>
+          <p className="mt-8">
+            <a
+              href={item.external_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent-dark"
+            >
+              {t("media.external")} →
+            </a>
+          </p>
         )}
 
         <div className="mt-12">
-          <Link
-            href="/media"
-            className="text-sm font-semibold text-brand-dark hover:underline"
-          >
+          <Link href="/media" className="text-accent hover:text-accent-dark">
             ← {t("common.backToMedia")}
           </Link>
         </div>
-      </Container>
+      </div>
 
       <JsonLd
         data={[

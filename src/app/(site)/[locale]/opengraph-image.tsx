@@ -6,7 +6,8 @@ import type { Locale } from "@/types/content";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Branded default social-share card, used for any page without its own image.
+// Austere per-locale social-share card: white background, name in navy with
+// the role line beneath. Used for any page without its own image.
 export default async function OpengraphImage({
   params,
 }: {
@@ -15,6 +16,7 @@ export default async function OpengraphImage({
   const { locale } = params;
   const settings = await getSettings();
   const l = locale as Locale;
+  const rtl = l === "he";
   const name = pick(settings.site_name, l);
   const tagline = pick(settings.tagline, l);
 
@@ -27,15 +29,26 @@ export default async function OpengraphImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "80px",
-          background: "linear-gradient(135deg, #0f2742 0%, #1c3a5e 100%)",
-          color: "#ffffff",
+          alignItems: rtl ? "flex-end" : "flex-start",
+          textAlign: rtl ? "right" : "left",
+          padding: "96px",
+          background: "#ffffff",
+          color: "#0f172a",
         }}
       >
-        <div style={{ fontSize: 96, fontWeight: 700, color: "#ffffff" }}>
+        <div style={{ fontSize: 88, fontWeight: 600, color: "#1e3a8a" }}>
           {name}
         </div>
-        <div style={{ fontSize: 40, marginTop: 24, color: "#b58a4b" }}>
+        <div
+          style={{
+            width: 96,
+            height: 4,
+            marginTop: 28,
+            marginBottom: 28,
+            background: "#1e3a8a",
+          }}
+        />
+        <div style={{ fontSize: 34, fontWeight: 400, color: "#475569" }}>
           {tagline}
         </div>
       </div>

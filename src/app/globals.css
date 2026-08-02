@@ -1,34 +1,16 @@
 @import "tailwindcss";
 
 /* ── Design tokens ──────────────────────────────────────────────────────
-   Clean white/black base with warm neutrals and a playful multi-colour
-   accent set used for icons, cards, and small highlights. */
+   Austere, institutional, quiet. Blue and white only. */
 @theme {
-  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-hebrew: "Assistant", "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-sans);
-  /* Legacy `font-serif` utility now resolves to the warm sans, so older
-     markup stays consistent with the new, less-dramatic type. */
-  --font-serif: var(--font-sans);
+  --font-sans: "Heebo", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* Neutrals */
-  --color-ink: #1b1714; /* warm near-black — text & dark fills */
-  --color-ink-soft: #3f3a35; /* body copy */
-  --color-muted: #726b64; /* secondary text */
-  --color-line: #ece7df; /* hairlines / borders */
-  --color-cream: #faf8f4; /* warm off-white sections */
-
-  /* Brand accent (warm) */
-  --color-brand: #e8843a;
-  --color-brand-dark: #c2611f;
-
-  /* Playful accent palette */
-  --color-a1: #e8843a; /* orange */
-  --color-a2: #9b6dff; /* purple */
-  --color-a3: #1fb6a6; /* teal */
-  --color-a4: #f45d9e; /* pink */
-  --color-a5: #4c8df6; /* blue */
-  --color-a6: #f4b740; /* yellow */
+  --color-bg: #ffffff;
+  --color-ink: #0f172a; /* text */
+  --color-accent: #1e3a8a; /* links, rules, small headings */
+  --color-accent-dark: #172e6b; /* hover */
+  --color-muted: #475569; /* section headings, secondary */
+  --color-line: #e2e8f0; /* hairlines */
 }
 
 :root {
@@ -36,7 +18,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
 }
@@ -45,36 +26,47 @@ body {
   background-color: #ffffff;
   color: var(--color-ink);
   font-family: var(--font-sans);
-  line-height: 1.65;
-  text-rendering: optimizeLegibility;
+  font-size: 1.0625rem; /* ~17px */
+  line-height: 1.7;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-html[dir="rtl"] body {
-  font-family: var(--font-hebrew);
-}
-
-/* Headings: warm sans, confident but not dramatic. */
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
+h1 {
+  font-size: 2.5rem; /* ~40px */
+  line-height: 1.2;
+  font-weight: 600;
   color: var(--color-ink);
+  letter-spacing: -0.01em;
 }
-
-html[dir="rtl"] h1,
-html[dir="rtl"] h2,
-html[dir="rtl"] h3,
-html[dir="rtl"] h4 {
-  font-family: var(--font-hebrew);
+html[dir="rtl"] h1 {
   letter-spacing: normal;
 }
 
-/* Rich-text content rendered from the dashboard. */
+/* Small section headings: 600, slightly spaced, muted. */
+.section-heading {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+html[dir="rtl"] .section-heading {
+  letter-spacing: 0.02em;
+}
+
+/* The single decorative element: a thin accent rule under the h1. */
+.title-rule {
+  width: 3rem;
+  height: 2px;
+  background-color: var(--color-accent);
+  border: 0;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Rich-text bodies rendered from the dashboard. */
 .prose-content p {
   margin-bottom: 1.1rem;
 }
@@ -82,21 +74,31 @@ html[dir="rtl"] h4 {
   margin-bottom: 0;
 }
 .prose-content a {
-  color: var(--color-brand-dark);
+  color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.prose-content h2,
-.prose-content h3 {
-  margin: 1.75rem 0 0.75rem;
+.prose-content a:hover {
+  color: var(--color-accent-dark);
 }
 .prose-content ul {
   list-style: disc;
   padding-inline-start: 1.25rem;
   margin-bottom: 1.1rem;
 }
+.prose-content li {
+  margin-bottom: 0.35rem;
+}
 
 :where(a, button, input, textarea, select):focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

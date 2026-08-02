@@ -32,7 +32,6 @@ export default async function LocaleLayout({
   const l = locale as Locale;
   const siteName = pick(settings.site_name, l);
 
-  // Third-party coverage → Person `subjectOf` for entity authority.
   const press = (await getMediaItems())
     .filter((m) => m.external_url)
     .map((m) => ({ url: m.external_url as string, name: pick(m.title, l) }));
@@ -47,19 +46,25 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Assistant:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <Header siteName={siteName} />
-          <main id="main">{children}</main>
-          <Footer
-            siteName={siteName}
-            tagline={pick(settings.tagline, l)}
-            socialLinks={settings.social_links}
-          />
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:p-2"
+          >
+            Skip to content
+          </a>
+          <div className="mx-auto flex min-h-screen max-w-[42rem] flex-col px-5">
+            <Header siteName={siteName} />
+            <main id="main" className="flex-1 py-10">
+              {children}
+            </main>
+            <Footer siteName={siteName} />
+          </div>
         </NextIntlClientProvider>
         <JsonLd
           data={[personSchema(settings, l, press), websiteSchema(settings, l)]}

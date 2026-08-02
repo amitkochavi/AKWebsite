@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL } from "./constants";
+import { SITE_URL, localeUrl } from "./constants";
 import { pick } from "./i18n";
 import type {
   Locale,
@@ -25,7 +25,7 @@ export function buildMetadata(opts: {
 }): Metadata {
   const { locale, path, title, description, image } = opts;
   const c = cleanPath(path);
-  const url = `${SITE_URL}/${locale}${c}`;
+  const url = localeUrl(locale, c);
   // When a page has no explicit image, omit it so Next falls back to the
   // file-based opengraph-image convention.
   const images = image
@@ -39,9 +39,9 @@ export function buildMetadata(opts: {
     alternates: {
       canonical: url,
       languages: {
-        en: `${SITE_URL}/en${c}`,
-        he: `${SITE_URL}/he${c}`,
-        "x-default": `${SITE_URL}/en${c}`,
+        "he-IL": localeUrl("he", c),
+        en: localeUrl("en", c),
+        "x-default": localeUrl("he", c),
       },
     },
     openGraph: {
@@ -104,7 +104,6 @@ export function personSchema(
           worksFor: {
             "@type": "Organization",
             name: p.worksFor,
-            url: "https://starwellholdings.com/",
           },
         }
       : {}),
@@ -131,7 +130,7 @@ export function websiteSchema(settings: SiteSettings, locale: Locale) {
     inLanguage: locale === "he" ? "he-IL" : "en-US",
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/${locale}/media?q={search_term_string}`,
+      target: `${localeUrl(locale, "/media")}?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
@@ -148,7 +147,7 @@ export function breadcrumbSchema(
       "@type": "ListItem",
       position: i + 1,
       name: item.name,
-      item: `${SITE_URL}/${locale}${cleanPath(item.path)}`,
+      item: localeUrl(locale, cleanPath(item.path)),
     })),
   };
 }
@@ -171,6 +170,6 @@ export function articleSchema(
       name: settings.person_schema.name,
       url: SITE_URL,
     },
-    mainEntityOfPage: `${SITE_URL}/${locale}/media/${item.slug}`,
+    mainEntityOfPage: localeUrl(locale, `/media/${item.slug}`),
   };
 }

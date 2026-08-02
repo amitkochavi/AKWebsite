@@ -1,77 +1,20 @@
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { NAV_ITEMS } from "@/lib/constants";
-import { Container } from "../ui/Container";
-import type { SocialLink } from "@/types/content";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
-export function Footer({
-  siteName,
-  tagline,
-  socialLinks,
-}: {
-  siteName: string;
-  tagline: string;
-  socialLinks: SocialLink[];
-}) {
-  const t = useTranslations();
-  const year = 2026;
-
+export function Footer({ siteName }: { siteName: string }) {
   return (
-    <footer className="mt-20 border-t border-line bg-ink text-cream">
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="lg:col-span-2">
-          <p className="font-serif text-2xl font-bold text-white">{siteName}</p>
-          <p className="mt-2 max-w-sm text-sm text-cream/80">{tagline}</p>
-        </div>
-
-        <nav aria-label="Footer">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand">
-            {t("footer.sections")}
-          </p>
-          <ul className="space-y-2">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.key}>
-                <Link
-                  href={item.href}
-                  className="text-sm text-cream/85 transition-colors hover:text-white"
-                >
-                  {t(`nav.${item.key}`)}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {socialLinks.length > 0 && (
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand">
-              {t("footer.connect")}
-            </p>
-            <ul className="space-y-2">
-              {socialLinks.map((s) => (
-                <li key={s.url}>
-                  <a
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-cream/85 transition-colors hover:text-white"
-                  >
-                    {s.platform}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </Container>
-
-      <div className="border-t border-white/10 py-5">
-        <Container>
-          <p className="text-xs text-cream/70">
-            © {year} {siteName}. {t("footer.rights")}
-          </p>
-        </Container>
+    <footer className="mt-16 border-t border-line py-8 text-sm text-muted">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <LanguageSwitcher />
+        <a
+          href="https://x.com/AmitKochavi"
+          target="_blank"
+          rel="noopener"
+          className="text-accent hover:text-accent-dark"
+        >
+          X
+        </a>
       </div>
+      <p className="mt-4">© {siteName} 2026</p>
     </footer>
   );
 }

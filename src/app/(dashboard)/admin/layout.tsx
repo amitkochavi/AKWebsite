@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
-  title: "Dashboard — Amit Kochavi",
+  title: "Dashboard, Amit Kochavi",
   robots: { index: false, follow: false },
 };
 
