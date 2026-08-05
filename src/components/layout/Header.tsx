@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { NAV_ITEMS } from "@/lib/constants";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header({ siteName }: { siteName: string }) {
   const t = useTranslations("nav");
@@ -12,9 +13,12 @@ export function Header({ siteName }: { siteName: string }) {
 
   return (
     <header className="border-b border-line py-6">
-      <Link href="/" className="text-lg font-semibold text-ink">
-        {siteName}
-      </Link>
+      <div className="flex items-center justify-between gap-4">
+        <Link href="/" className="text-lg font-semibold text-ink">
+          {siteName}
+        </Link>
+        <LanguageSwitcher />
+      </div>
       <nav
         aria-label="Primary"
         className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm"

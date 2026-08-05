@@ -25,7 +25,10 @@ export const FALLBACK_SETTINGS: SiteSettings = {
     he: "יועץ בכיר לראש עיריית שדרות | יזם | ביצוע ופיתוח כלכלי-חברתי",
   },
   contact_email: "contact@amitkochavi.com",
-  social_links: [{ platform: "X", url: "https://x.com/AmitKochavi" }],
+  social_links: [
+    { platform: "X", url: "https://x.com/AmitKochavi" },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/amitkochavi/" },
+  ],
   seo_defaults: {
     title: {
       en: "Amit Kochavi | Senior Advisor to the Mayor of Sderot",
@@ -52,7 +55,10 @@ export const FALLBACK_SETTINGS: SiteSettings = {
       en: "Senior Advisor to the Mayor of Sderot, council member of the President's Voice of the People initiative, entrepreneur and founder of Starwell Holdings.",
       he: "יועץ בכיר לראש עיריית שדרות, חבר מועצת קול העם של נשיא המדינה, יזם ומייסד סטארוול הולדינגס.",
     },
-    sameAs: ["https://x.com/AmitKochavi"],
+    sameAs: [
+      "https://x.com/AmitKochavi",
+      "https://www.linkedin.com/in/amitkochavi/",
+    ],
     worksFor: "Starwell Holdings",
     knowsAbout: [
       "Public Service",
@@ -113,8 +119,8 @@ export const FALLBACK_PAGES: Record<PageKey, Page> = {
     ],
     seo: {
       title: {
-        en: "Amit Kochavi | Senior Advisor to the Mayor of Sderot",
-        he: "עמית כוכבי | יועץ בכיר לראש עיריית שדרות",
+        en: "Amit Kochavi",
+        he: "עמית כוכבי",
       },
       description: {
         en: "Senior Advisor to the Mayor of Sderot, council member of the President's Voice of the People initiative, entrepreneur and founder of Starwell Holdings.",

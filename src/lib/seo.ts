@@ -44,6 +44,17 @@ export function buildMetadata(opts: {
         "x-default": localeUrl("he", c),
       },
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
     openGraph: {
       type: "website",
       url,
@@ -56,6 +67,8 @@ export function buildMetadata(opts: {
     },
     twitter: {
       card: "summary_large_image",
+      site: "@AmitKochavi",
+      creator: "@AmitKochavi",
       title,
       description,
       ...(image ? { images: [image] } : {}),
@@ -85,6 +98,7 @@ export function personSchema(
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
     name: p.name,
     alternateName: p.alternateName,
     url: SITE_URL,
@@ -128,6 +142,8 @@ export function websiteSchema(settings: SiteSettings, locale: Locale) {
     name: pick(settings.site_name, locale),
     url: SITE_URL,
     inLanguage: locale === "he" ? "he-IL" : "en-US",
+    about: { "@id": `${SITE_URL}/#person` },
+    publisher: { "@id": `${SITE_URL}/#person` },
     potentialAction: {
       "@type": "SearchAction",
       target: `${localeUrl(locale, "/media")}?q={search_term_string}`,

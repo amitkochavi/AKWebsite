@@ -48,26 +48,45 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
         </section>
       );
 
-    case "cards":
+    case "cards": {
+      const arrow = locale === "he" ? "←" : "→";
       return (
         <section className="space-y-6">
           {heading && <h2 className="section-heading">{heading}</h2>}
-          <div className="space-y-5">
+          <div className="space-y-4">
             {(block.items ?? []).map((item, i) => {
               const title = pick(item.title, locale);
               const body = pick(item.body, locale);
+              // A card with a link is a primary navigation affordance: give it a
+              // bordered, clearly clickable surface. Cards without a link stay
+              // plain (e.g. foundation and project lists).
+              if (item.href) {
+                return (
+                  <Link
+                    key={i}
+                    href={item.href}
+                    className="group block rounded-lg border border-line p-5 hover:border-accent focus-visible:border-accent"
+                  >
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="font-semibold text-accent">{title}</span>
+                      <span
+                        className="text-accent transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
+                        aria-hidden
+                      >
+                        {arrow}
+                      </span>
+                    </span>
+                    {body && (
+                      <span className="mt-1 block leading-relaxed text-muted">
+                        {body}
+                      </span>
+                    )}
+                  </Link>
+                );
+              }
               return (
                 <div key={i}>
-                  {item.href ? (
-                    <Link
-                      href={item.href}
-                      className="font-semibold text-accent hover:text-accent-dark"
-                    >
-                      {title}
-                    </Link>
-                  ) : (
-                    <p className="font-semibold text-ink">{title}</p>
-                  )}
+                  <p className="font-semibold text-ink">{title}</p>
                   {body && (
                     <p className="mt-1 leading-relaxed text-muted">{body}</p>
                   )}
@@ -77,6 +96,7 @@ function BlockView({ block, locale }: { block: Block; locale: Locale }) {
           </div>
         </section>
       );
+    }
 
     case "image":
       return block.image ? (

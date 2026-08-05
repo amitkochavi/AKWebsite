@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getPage } from "@/lib/content";
+import { getPage, getSettings } from "@/lib/content";
 import { pick } from "@/lib/i18n";
 import { breadcrumbSchema } from "@/lib/seo";
 import type { Locale, PageKey } from "@/types/content";
@@ -20,9 +20,15 @@ export async function PageView({
   const page = await getPage(pageKey);
   if (!page) notFound();
 
+  // The homepage shows Amit's round profile photo (from Settings) above the name.
+  const avatar =
+    pageKey === "home"
+      ? (await getSettings()).person_schema.image
+      : undefined;
+
   return (
     <>
-      <Hero hero={page.hero} locale={locale} />
+      <Hero hero={page.hero} locale={locale} avatar={avatar} />
       <BlockRenderer blocks={page.blocks} locale={locale} />
       {path !== "/" && (
         <JsonLd
