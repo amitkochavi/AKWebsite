@@ -7,6 +7,7 @@ import { dir, pick } from "@/lib/i18n";
 import { getMediaItems, getSettings } from "@/lib/content";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTop } from "@/components/layout/BackToTop";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema, websiteSchema } from "@/lib/seo";
 import type { Locale } from "@/types/content";
@@ -65,6 +66,7 @@ export default async function LocaleLayout({
             </main>
             <Footer siteName={siteName} />
           </div>
+          <BackToTop />
         </NextIntlClientProvider>
         <JsonLd
           data={[personSchema(settings, l, press), websiteSchema(settings, l)]}
