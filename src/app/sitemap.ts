@@ -20,18 +20,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter((m) => !m.external_url && m.kind !== "reading")
     .map((m) => `/media/${m.slug}`);
   const paths = [...STATIC_PATHS, ...detailPaths];
+  const lastModified = new Date();
 
-  // Canonical entry is the Hebrew (default, root) URL; English is an alternate.
-  return paths.map((p) => ({
-    url: localeUrl("he", p),
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: p === "" ? 1 : 0.7,
-    alternates: {
-      languages: {
-        "he-IL": localeUrl("he", p),
-        en: localeUrl("en", p),
-      },
-    },
-  }));
+  // List both language versions of every page as their own entry, each one
+  // cross-referencing the other plus x-default (the Hebrew root), which is the
+  // format Google recommends for hreflang sitemaps.
+  const entries: MetadataRoute.Sitemap = [];
+  for (const p of paths) {
+    const languages = {
+      "he-IL": localeUrl("he", p),
+      en: localeUrl("en", p),
+      "x-default": localeUrl("he", p),
+    };
+    const priority = p === "" ? 1 : p.startsWith("/media/") ? 0.6 : 0.8;
+    for (const loc of ["he", "en"] as const) {
+      entries.push({
+        url: localeUrl(loc, p),
+        lastModified,
+        changeFrequency: "weekly",
+        priority,
+        alternates: { languages },
+      });
+    }
+  }
+  return entries;
 }
