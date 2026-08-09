@@ -8,9 +8,17 @@ export async function pageMetadata(
   key: PageKey,
   path: string,
   locale: Locale,
+  titleOverride?: string,
 ): Promise<Metadata> {
   const [page, settings] = await Promise.all([getPage(key), getSettings()]);
   if (!page) return {};
-  const { title, description, image } = pageSeo(page, settings, locale);
-  return buildMetadata({ locale, path, title, description, image });
+  const seo = pageSeo(page, settings, locale);
+  const title = titleOverride ?? seo.title;
+  return buildMetadata({
+    locale,
+    path,
+    title,
+    description: seo.description,
+    image: seo.image,
+  });
 }

@@ -11,6 +11,12 @@
   --color-accent-dark: #172e6b; /* hover */
   --color-muted: #475569; /* section headings, secondary */
   --color-line: #e2e8f0; /* hairlines */
+
+  /* Dashboard-only tokens (not used by the public site). */
+  --color-cream: #f6f7f9; /* light dashboard surfaces + sidebar text */
+  --color-ink-soft: #1e293b; /* sidebar hover */
+  --color-brand: #1e3a8a; /* dashboard accents */
+  --color-brand-dark: #172e6b;
 }
 
 :root {
