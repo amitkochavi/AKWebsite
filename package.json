@@ -16,6 +16,7 @@
     "@tiptap/pm": "^2.6.6",
     "@tiptap/react": "^2.6.6",
     "@tiptap/starter-kit": "^2.6.6",
+    "bidi-js": "^1.0.3",
     "next": "^15.1.6",
     "next-intl": "^3.26.3",
     "react": "^19.0.0",

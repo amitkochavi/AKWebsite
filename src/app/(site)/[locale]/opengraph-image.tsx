@@ -1,10 +1,23 @@
 import { ImageResponse } from "next/og";
+import bidiFactory from "bidi-js";
 import { getSettings } from "@/lib/content";
 import { pick } from "@/lib/i18n";
 import type { Locale } from "@/types/content";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+const bidi = bidiFactory();
+
+/**
+ * Satori (used by next/og) renders text in logical order left to right and
+ * does NOT apply the Unicode bidi algorithm, so Hebrew comes out mirrored.
+ * We reorder each string into visual order ourselves before rendering.
+ */
+function toVisual(text: string, base: "ltr" | "rtl"): string {
+  const levels = bidi.getEmbeddingLevels(text, base);
+  return bidi.getReorderedString(text, levels);
+}
 
 // Austere per-locale social-share card: white background, name in navy with
 // the role line beneath. Used for any page without its own image.
@@ -17,8 +30,9 @@ export default async function OpengraphImage({
   const settings = await getSettings();
   const l = locale as Locale;
   const rtl = l === "he";
-  const name = pick(settings.site_name, l);
-  const tagline = pick(settings.tagline, l);
+  const base = rtl ? "rtl" : "ltr";
+  const name = toVisual(pick(settings.site_name, l), base);
+  const tagline = toVisual(pick(settings.tagline, l), base);
 
   return new ImageResponse(
     (
