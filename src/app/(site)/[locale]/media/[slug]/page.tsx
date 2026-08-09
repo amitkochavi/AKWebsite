@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getMediaItem, getMediaItems, getSettings } from "@/lib/content";
 import { pick } from "@/lib/i18n";
+import { linkifyBody } from "@/lib/linkify";
 import {
   articleSchema,
   breadcrumbSchema,
@@ -71,13 +72,10 @@ export default async function MediaItemPage({ params }: Props) {
         <p className="mb-6 text-lg leading-relaxed text-ink">
           {pick(item.excerpt, l)}
         </p>
-        <div className="prose-content leading-relaxed text-ink">
-          {looksLikeHtml ? (
-            <div dangerouslySetInnerHTML={{ __html: body }} />
-          ) : (
-            <p>{body}</p>
-          )}
-        </div>
+        <div
+          className="prose-content leading-relaxed text-ink"
+          dangerouslySetInnerHTML={{ __html: linkifyBody(body, looksLikeHtml) }}
+        />
 
         {item.external_url && (
           <p className="mt-8">
