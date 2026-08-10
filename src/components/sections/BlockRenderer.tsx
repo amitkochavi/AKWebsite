@@ -1,18 +1,17 @@
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { pick } from "@/lib/i18n";
+import { linkifyBody } from "@/lib/linkify";
 import type { Block, Locale } from "@/types/content";
 
-/** Renders dashboard rich-text HTML, or plain text as a paragraph. */
+/** Renders dashboard rich-text HTML, or plain text, with bare URLs linked. */
 function Body({ html }: { html: string }) {
   if (!html) return null;
   const looksLikeHtml = /<\/?[a-z][\s\S]*>/i.test(html);
   return (
     <div
       className="prose-content leading-relaxed text-ink"
-      {...(looksLikeHtml
-        ? { dangerouslySetInnerHTML: { __html: html } }
-        : { children: <p>{html}</p> })}
+      dangerouslySetInnerHTML={{ __html: linkifyBody(html, looksLikeHtml) }}
     />
   );
 }
