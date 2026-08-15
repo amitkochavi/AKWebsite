@@ -1,15 +1,16 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { dir, pick } from "@/lib/i18n";
 import { getMediaItems, getSettings } from "@/lib/content";
+import { NAV_ITEMS } from "@/lib/constants";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { personSchema, websiteSchema } from "@/lib/seo";
+import { personSchema, websiteSchema, siteNavigationSchema } from "@/lib/seo";
 import type { Locale } from "@/types/content";
 import "@/app/globals.css";
 
@@ -36,6 +37,12 @@ export default async function LocaleLayout({
   const press = (await getMediaItems())
     .filter((m) => m.external_url)
     .map((m) => ({ url: m.external_url as string, name: pick(m.title, l) }));
+
+  const tNav = await getTranslations({ locale, namespace: "nav" });
+  const navItems = NAV_ITEMS.map((item) => ({
+    name: tNav(item.key),
+    path: item.href,
+  }));
 
   return (
     <html lang={locale} dir={dir(l)}>
@@ -69,7 +76,11 @@ export default async function LocaleLayout({
           <BackToTop />
         </NextIntlClientProvider>
         <JsonLd
-          data={[personSchema(settings, l, press), websiteSchema(settings, l)]}
+          data={[
+            personSchema(settings, l, press),
+            websiteSchema(settings, l),
+            siteNavigationSchema(navItems, l),
+          ]}
         />
       </body>
     </html>

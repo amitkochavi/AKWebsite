@@ -14,7 +14,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BusinessPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const l = locale as Locale;
+  const outbound = {
+    href: "https://starwellholdings.com",
+    label: l === "he" ? "אתר סטארוול הולדינגס ↗" : "Starwell Holdings ↗",
+  };
   return (
-    <PageView pageKey="business" path="/business" locale={locale as Locale} />
+    <PageView
+      pageKey="business"
+      path="/business"
+      locale={l}
+      outbound={outbound}
+    />
   );
 }

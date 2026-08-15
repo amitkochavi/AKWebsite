@@ -12,10 +12,12 @@ export async function PageView({
   pageKey,
   path,
   locale,
+  outbound,
 }: {
   pageKey: PageKey;
   path: string;
   locale: Locale;
+  outbound?: { href: string; label: string };
 }) {
   const page = await getPage(pageKey);
   if (!page) notFound();
@@ -30,6 +32,18 @@ export async function PageView({
     <>
       <Hero hero={page.hero} locale={locale} avatar={avatar} />
       <BlockRenderer blocks={page.blocks} locale={locale} />
+      {outbound && (
+        <p className="mt-8">
+          <a
+            href={outbound.href}
+            target="_blank"
+            rel="noopener"
+            className="text-accent hover:text-accent-dark"
+          >
+            {outbound.label}
+          </a>
+        </p>
+      )}
       {path !== "/" && (
         <JsonLd
           data={breadcrumbSchema(
