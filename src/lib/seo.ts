@@ -118,6 +118,7 @@ export function personSchema(
           worksFor: {
             "@type": "Organization",
             name: p.worksFor,
+            url: "https://starwellholdings.com",
           },
         }
       : {}),
@@ -149,6 +150,29 @@ export function websiteSchema(settings: SiteSettings, locale: Locale) {
       target: `${localeUrl(locale, "/media")}?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+/**
+ * Declares the main navigation to search engines. This is the structured data
+ * Google reads when deciding whether to show sitelinks (the indented sub-links
+ * under a result). Sitelinks remain algorithmic, but this describes the site's
+ * primary sections explicitly.
+ */
+export function siteNavigationSchema(
+  items: { name: string; path: string }[],
+  locale: Locale,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Primary navigation",
+    itemListElement: items.map((item, i) => ({
+      "@type": "SiteNavigationElement",
+      position: i + 1,
+      name: item.name,
+      url: localeUrl(locale, item.path),
+    })),
   };
 }
 
