@@ -14,6 +14,10 @@ import type { Locale } from "@/types/content";
 
 type Props = { params: Promise<{ locale: string }> };
 
+// Revalidate daily so the computed age in the bio updates on the birthday
+// itself, without waiting for a redeploy.
+export const revalidate = 86400;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata("about", "/about", locale as Locale);
