@@ -32,10 +32,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = await getMediaItem(slug);
   if (!item) return {};
   const l = locale as Locale;
+  const suffix = l === "he" ? "עמית כוכבי" : "Amit Kochavi";
   return buildMetadata({
     locale: l,
     path: `/media/${slug}`,
-    title: `${pick(item.title, l)} | Amit Kochavi`,
+    title: `${pick(item.title, l)} | ${suffix}`,
     description: pick(item.excerpt, l),
     image: item.cover_image,
   });

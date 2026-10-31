@@ -26,11 +26,10 @@ export function buildMetadata(opts: {
   const { locale, path, title, description, image } = opts;
   const c = cleanPath(path);
   const url = localeUrl(locale, c);
-  // When a page has no explicit image, omit it so Next falls back to the
-  // file-based opengraph-image convention.
-  const images = image
-    ? [{ url: image, width: 1200, height: 630, alt: title }]
-    : undefined;
+  // Every page gets an OG image: a page-specific one when provided, otherwise
+  // the shared per-locale share card at a stable URL.
+  const ogImage = image ?? `${SITE_URL}/api/og/${locale}`;
+  const images = [{ url: ogImage, width: 1200, height: 630, alt: title }];
 
   return {
     title,
@@ -63,7 +62,7 @@ export function buildMetadata(opts: {
       description,
       locale: locale === "he" ? "he_IL" : "en_US",
       alternateLocale: locale === "he" ? "en_US" : "he_IL",
-      ...(images ? { images } : {}),
+      images,
     },
     twitter: {
       card: "summary_large_image",
@@ -71,16 +70,17 @@ export function buildMetadata(opts: {
       creator: "@AmitKochavi",
       title,
       description,
-      ...(image ? { images: [image] } : {}),
+      images: [ogImage],
     },
   };
 }
 
 /** Resolve a page's effective SEO title/description (override → defaults). */
 export function pageSeo(page: Page, settings: SiteSettings, locale: Locale) {
+  // Hebrew titles end with the Hebrew name, English titles with the English name.
+  const suffix = locale === "he" ? "עמית כוכבי" : SITE_NAME;
   const title =
-    pick(page.seo?.title, locale) ||
-    `${pick(page.title, locale)} | ${SITE_NAME}`;
+    pick(page.seo?.title, locale) || `${pick(page.title, locale)} | ${suffix}`;
   const description =
     pick(page.seo?.description, locale) ||
     pick(settings.seo_defaults.description, locale);
@@ -95,6 +95,21 @@ export function personSchema(
   press: { url: string; name: string }[] = [],
 ) {
   const p = settings.person_schema;
+  // Consistent with the homepage subtitle.
+  const jobTitle =
+    locale === "he"
+      ? 'מייסד ומנכ"ל סטארוול הולדינגס; יועץ בכיר לראש עיריית שדרות'
+      : "Founder and CEO of Starwell Holdings; Senior Advisor to the Mayor of Sderot";
+  const sameAs = Array.from(
+    new Set([
+      ...(p.sameAs ?? []),
+      "https://x.com/AmitKochavi",
+      "https://www.linkedin.com/in/amitkochavi/",
+      "https://blogs.timesofisrael.com/author/amit-kochavi/",
+      "https://www.crunchbase.com/person/amit-kochavi",
+      "https://starwellholdings.com/our-team",
+    ]),
+  );
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -103,25 +118,34 @@ export function personSchema(
     alternateName: p.alternateName,
     url: SITE_URL,
     mainEntityOfPage: SITE_URL,
-    jobTitle: pick(p.jobTitle, locale),
+    jobTitle,
     description: pick(p.description, locale),
     image: p.image
       ? p.image.startsWith("http")
         ? p.image
         : `${SITE_URL}${p.image}`
       : undefined,
-    sameAs: p.sameAs,
+    sameAs,
     knowsAbout: p.knowsAbout,
     knowsLanguage: ["en", "he"],
-    ...(p.worksFor
-      ? {
-          worksFor: {
-            "@type": "Organization",
-            name: p.worksFor,
-            url: "https://starwellholdings.com",
-          },
-        }
-      : {}),
+    worksFor: {
+      "@id": "https://starwellholdings.com/#organization",
+      name: "Starwell Holdings Ltd.",
+    },
+    memberOf: [
+      {
+        "@type": "Organization",
+        name: "Sapir Academic College Board of Governors",
+      },
+      {
+        "@type": "Organization",
+        name: "Kol HaAm Council (Voice of the People), Office of the President of Israel",
+      },
+    ],
+    award: [
+      "Forbes Israel 30 Under 30 (2017)",
+      "TheMarker 40 Under 40 (2025)",
+    ],
     // Authoritative third-party coverage helps Google associate these pages
     // with the person entity.
     ...(press.length

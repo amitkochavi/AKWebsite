@@ -2,16 +2,18 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { pick } from "@/lib/i18n";
 import { linkifyBody } from "@/lib/linkify";
+import { applyContentTokens } from "@/lib/age";
 import type { Block, Locale } from "@/types/content";
 
 /** Renders dashboard rich-text HTML, or plain text, with bare URLs linked. */
 function Body({ html }: { html: string }) {
   if (!html) return null;
-  const looksLikeHtml = /<\/?[a-z][\s\S]*>/i.test(html);
+  const withTokens = applyContentTokens(html);
+  const looksLikeHtml = /<\/?[a-z][\s\S]*>/i.test(withTokens);
   return (
     <div
       className="prose-content leading-relaxed text-ink"
-      dangerouslySetInnerHTML={{ __html: linkifyBody(html, looksLikeHtml) }}
+      dangerouslySetInnerHTML={{ __html: linkifyBody(withTokens, looksLikeHtml) }}
     />
   );
 }

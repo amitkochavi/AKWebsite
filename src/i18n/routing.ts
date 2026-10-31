@@ -6,6 +6,9 @@ export const routing = defineRouting({
   defaultLocale: "he",
   // The default locale (he) has no prefix; only English carries /en.
   localePrefix: "as-needed",
+  // Never redirect based on Accept-Language or a cookie: each URL always
+  // serves the same language. hreflang tags and the switcher handle discovery.
+  localeDetection: false,
 });
 
 export type AppLocale = (typeof routing.locales)[number];
