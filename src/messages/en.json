@@ -23,7 +23,10 @@
   "media": {
     "title": "Media & Writing",
     "empty": "No items published yet.",
-    "external": "Read on the original site"
+    "external": "Read on the original site",
+    "recognition": "Recognition",
+    "writing": "Writing",
+    "coverage": "Coverage"
   },
   "books": {
     "title": "Books",

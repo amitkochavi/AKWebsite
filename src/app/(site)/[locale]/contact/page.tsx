@@ -40,10 +40,30 @@ export default async function ContactPage({ params }: Props) {
           <a
             href="https://x.com/AmitKochavi"
             target="_blank"
-            rel="noopener"
+            rel="me noopener"
             className="text-accent hover:text-accent-dark"
           >
             @AmitKochavi
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://www.linkedin.com/in/amitkochavi/"
+            target="_blank"
+            rel="me noopener"
+            className="text-accent hover:text-accent-dark"
+          >
+            LinkedIn
+          </a>
+        </p>
+        <p>
+          <a
+            href="https://starwellholdings.com"
+            target="_blank"
+            rel="noopener"
+            className="text-accent hover:text-accent-dark"
+          >
+            Starwell Holdings ↗
           </a>
         </p>
       </div>

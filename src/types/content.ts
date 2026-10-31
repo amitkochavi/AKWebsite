@@ -82,7 +82,13 @@ export type SiteSettings = {
   person_schema: PersonSchema;
 };
 
-export type MediaKind = "article" | "press" | "video" | "reading" | "writing";
+export type MediaKind =
+  | "article"
+  | "press"
+  | "video"
+  | "reading"
+  | "writing"
+  | "recognition";
 
 export type MediaItem = {
   id: string;

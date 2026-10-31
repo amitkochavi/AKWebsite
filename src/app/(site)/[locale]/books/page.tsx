@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getMediaItems } from "@/lib/content";
 import { pick } from "@/lib/i18n";
 import { buildMetadata, breadcrumbSchema } from "@/lib/seo";
+import { pageDescription } from "@/lib/page-descriptions";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { Locale } from "@/types/content";
 
@@ -10,12 +11,14 @@ type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const l = locale as Locale;
   const t = await getTranslations({ locale, namespace: "books" });
+  const suffix = l === "he" ? "עמית כוכבי" : "Amit Kochavi";
   return buildMetadata({
-    locale: locale as Locale,
+    locale: l,
     path: "/books",
-    title: `${t("title")} | Amit Kochavi`,
-    description: t("intro"),
+    title: `${t("title")} | ${suffix}`,
+    description: pageDescription("books", l) ?? t("intro"),
   });
 }
 

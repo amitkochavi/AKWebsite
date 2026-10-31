@@ -23,7 +23,10 @@
   "media": {
     "title": "תקשורת וכתיבה",
     "empty": "טרם פורסמו פריטים.",
-    "external": "לכתבה המקורית"
+    "external": "לכתבה המקורית",
+    "recognition": "הכרה",
+    "writing": "כתיבה",
+    "coverage": "סיקור"
   },
   "books": {
     "title": "ספרים",
