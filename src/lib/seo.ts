@@ -108,6 +108,7 @@ export function personSchema(
       "https://blogs.timesofisrael.com/author/amit-kochavi/",
       "https://www.crunchbase.com/person/amit-kochavi",
       "https://starwellholdings.com/our-team",
+      "https://www.sapir.ac.il/staff/7054",
     ]),
   );
   return {
